@@ -1,0 +1,19 @@
+{
+  "_note": "Each element is judged alone, against its own bar. 'states' are window.__app.states names; the critic shoots them at 1440x900 and 390x844.",
+  "bar": {
+    "brand": ["reference/hero-art-cozydigital.jpg", "reference/crop-loop-material.png", "reference/logo-original-600.png", "reference/crop-logo-pixels.png"],
+    "standard": "Award-level studio site (Awwwards SOTD tier): considered type, real depth and light, motion that feels directed, no template look, nothing cheap or cluttered. Colours must stay Cozy Digital's: near-black #08090b, cyan #67e8f9, indigo #818cf8, violet #c084fc."
+  },
+  "elements": [
+    { "id": "hero", "name": "Hero: chrome loop in the logo ring + headline", "states": ["intro", "hero", "hero-scrolled"], "bar": "Beats reference/hero-art-cozydigital.jpg on material quality (black chrome with violet/cyan reflections) and composition, while reading as the Cozy Digital logo ring. Headline legible, no collision with the 3D." },
+    { "id": "iris", "name": "Transition: through the ring into the studio", "states": ["hero-scrolled", "iris", "assets"], "bar": "Feels like flying through the logo ring; no blown-out white, no flat crossfade look, clear sense of where you land." },
+    { "id": "assets", "name": "You send: photo prints + copy", "states": ["assets", "dissolve-start"], "bar": "Prints read as the customer's own photos, tactile and premium; copy legible and not colliding with the prints." },
+    { "id": "dissolve", "name": "Signature: photo breaks into pixels through the ring, lands as film", "states": ["dissolve-start", "dissolve-mid", "dissolve-late", "film"], "bar": "The screen-record moment. The pixel stream must read as the logo's pixel scatter, travel visibly through the ring, and land as the same shot playing. Beats should be legible and not fight the stream." },
+    { "id": "handoff", "name": "Film fills the frame and hands over to the reel", "states": ["film", "film-full", "reel"], "bar": "Seamless: the film becomes the page. No black frames, no jarring cut." },
+    { "id": "reel", "name": "Work grid", "states": ["reel"], "bar": "Editorial grid that makes the clips look expensive; captions tidy." },
+    { "id": "agent", "name": "Cozy Agent: orb, swarm, chat", "states": ["agent-enter", "agent"], "bar": "Premium product moment worth paying more for: the orb reads as an intelligence, the chat looks like a real product UI, text has contrast." },
+    { "id": "pricing", "name": "Pricing", "states": ["pricing"], "bar": "Clear, confident, featured plan obvious, matches the rest of the page." },
+    { "id": "start", "name": "Start form + closing loop + footer", "states": ["start", "end"], "bar": "Inviting, legible form; the loop closes the story without hurting legibility." },
+    { "id": "chrome", "name": "Chrome: nav, logo, type system, mobile", "states": ["hero", "pricing"], "bar": "Logo modernised but recognisably the original (reference/logo-original-600.png); nav unobtrusive; type hierarchy consistent; mobile layouts have no overlaps or cut-off text." }
+  ]
+}

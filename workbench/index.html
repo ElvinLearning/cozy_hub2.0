@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cozy Workbench</title>
+<style>
+:root{--bg:#08090b;--panel:#121418;--ink:#edf0ed;--muted:#9aa09c;--line:#ffffff1f;--cyan:#67e8f9;--violet:#c084fc}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 Inter,system-ui,sans-serif}
+header{padding:24px 28px;border-bottom:1px solid var(--line);display:flex;gap:20px;align-items:baseline;flex-wrap:wrap}
+h1{margin:0;font-size:22px;letter-spacing:-.02em}h2{font-size:16px;margin:0 0 10px}
+.muted{color:var(--muted)}main{padding:20px 28px;display:grid;gap:22px}
+table{border-collapse:collapse;width:100%;font-size:13px}th,td{padding:7px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:500}.s{font-weight:700;font-variant-numeric:tabular-nums}
+.s.hi{color:#4ade80}.s.mid{color:#fbbf24}.s.lo{color:#f87171}
+.round{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+.sheets{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:10px;margin-top:12px}
+.sheets img{width:100%;border-radius:8px;border:1px solid var(--line)}
+.gap{color:#cfd5d0}.delta{font-size:11px;color:var(--muted)}
+a{color:var(--cyan)}
+</style></head>
+<body>
+<header><h1>Cozy Digital · workbench</h1><span class="muted" id="sum"></span><a href="art-bible/index.html">art bible</a></header>
+<main id="main"><p class="muted">Loading progress.json…</p></main>
+<script>
+const cls = (s) => (s >= 8 ? 'hi' : s >= 6 ? 'mid' : 'lo');
+fetch('progress.json?' + Date.now()).then((r) => r.json()).then(({ rounds }) => {
+  const main = document.getElementById('main');
+  main.innerHTML = '';
+  if (!rounds.length) return (main.innerHTML = '<p class="muted">No rounds yet.</p>');
+  const ids = [...new Set(rounds.flatMap((r) => r.scores.map((s) => s.id)))];
+  // trend table
+  const t = document.createElement('div');
+  t.className = 'round';
+  t.innerHTML = `<h2>Scores by round</h2><table><tr><th>element</th>${rounds.map((r) => `<th>${r.id}</th>`).join('')}<th>latest gap</th></tr>${ids
+    .map((id) => {
+      const cells = rounds.map((r) => r.scores.find((s) => s.id === id)).map((s) => (s ? `<td class="s ${cls(s.score)}">${s.score}</td>` : '<td>–</td>')).join('');
+      const last = [...rounds].reverse().map((r) => r.scores.find((s) => s.id === id)).find(Boolean);
+      return `<tr><td>${id}</td>${cells}<td class="gap">${last?.gap || ''}</td></tr>`;
+    })
+    .join('')}</table>`;
+  main.append(t);
+  for (const r of [...rounds].reverse()) {
+    const d = document.createElement('section');
+    d.className = 'round';
+    d.innerHTML = `<h2>${r.id} <span class="muted">· ${r.date || ''} · critic: ${r.critic || ''}</span></h2><p class="muted">${r.summary || ''}</p>
+      <table><tr><th>element</th><th>score</th><th>single biggest gap</th></tr>${r.scores.map((s) => `<tr><td>${s.id}</td><td class="s ${cls(s.score)}">${s.score}</td><td class="gap">${s.gap}</td></tr>`).join('')}</table>
+      <div class="sheets">${(r.sheets || []).map((x) => `<a href="${x}"><img src="${x}" loading="lazy" alt=""></a>`).join('')}</div>
+      ${r.fixes ? `<p class="muted">Builder response: ${r.fixes}</p>` : ''}`;
+    main.append(d);
+  }
+  const last = rounds[rounds.length - 1];
+  document.getElementById('sum').textContent = `${rounds.length} round(s) · latest mean ${(last.scores.reduce((a, s) => a + s.score, 0) / last.scores.length).toFixed(1)}`;
+});
+</script>
+</body></html>

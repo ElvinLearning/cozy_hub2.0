@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Cozy Studio · Admin</title>
+  <link rel="icon" href="/brand/cozy-favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/admin/admin.css">
+  <script type="module" src="/admin/admin.js"></script>
+</head>
+<body>
+  <!-- sign in -->
+  <main id="login" class="login" hidden>
+    <form class="login-card" id="login-form">
+      <img src="/brand/cozy-logo-horizontal.svg" alt="Cozy Digital" height="40">
+      <h1>Studio admin</h1>
+      <p class="muted">Straight line to the Higgsfield API. Staff only.</p>
+      <label>Password<input type="password" name="password" autocomplete="current-password" required autofocus></label>
+      <button class="btn btn-primary" type="submit">Sign in</button>
+      <p class="form-error" id="login-error" role="alert"></p>
+    </form>
+  </main>
+
+  <div id="shell" class="shell" hidden>
+    <aside class="side">
+      <a class="side-brand" href="/"><img src="/brand/cozy-mark.svg" alt="" width="30" height="30"><span>Cozy Studio</span></a>
+      <nav class="side-nav" id="nav">
+        <button data-view="overview" aria-current="page">Overview</button>
+        <button data-view="generate">Generate</button>
+        <button data-view="jobs">Jobs <span class="badge" id="running-badge" hidden></span></button>
+        <button data-view="agent">Cozy Agent</button>
+        <button data-view="customers">Customers</button>
+        <button data-view="leads">Leads <span class="badge" id="leads-badge" hidden></span></button>
+        <button data-view="pricing">Pricing</button>
+      </nav>
+      <div class="side-foot">
+        <div class="hf-state" id="hf-state"></div>
+        <button class="btn btn-quiet btn-sm" id="logout">Sign out</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <!-- overview -->
+      <section data-panel="overview">
+        <header class="page-head"><div><p class="eyebrow">Today</p><h1>Overview</h1></div></header>
+        <div class="stats" id="stats"></div>
+        <div class="grid-2">
+          <div class="card"><h2>Latest jobs</h2><div id="ov-jobs" class="list"></div></div>
+          <div class="card"><h2>New leads</h2><div id="ov-leads" class="list"></div></div>
+        </div>
+      </section>
+
+      <!-- generate -->
+      <section data-panel="generate" hidden>
+        <header class="page-head"><div><p class="eyebrow">Higgsfield API</p><h1>Generate</h1></div></header>
+        <form id="gen-form" class="card gen">
+          <div class="row">
+            <label class="grow">Model
+              <select name="model" id="gen-model"></select>
+            </label>
+            <label class="grow" id="gen-custom-wrap" hidden>Model id
+              <input name="customModel" id="gen-custom" placeholder="vendor/model/version/task" spellcheck="false">
+            </label>
+          </div>
+          <p class="hint" id="gen-model-note"></p>
+          <div class="row">
+            <label class="grow">Bill to
+              <select name="customerId" id="gen-customer"><option value="">Internal (no credits)</option></select>
+            </label>
+            <label>Credits<input name="credits" id="gen-credits" type="number" min="0" step="1" style="width:7em"></label>
+          </div>
+          <div class="seg" role="tablist">
+            <button type="button" class="seg-on" data-mode="form">Fields</button>
+            <button type="button" data-mode="raw">Raw JSON</button>
+          </div>
+          <div id="gen-fields" class="fields"></div>
+          <label id="gen-raw-wrap" hidden>Request body (sent as-is)
+            <textarea id="gen-raw" rows="12" spellcheck="false" class="mono"></textarea>
+          </label>
+          <div class="drop" id="gen-drop">
+            <input type="file" id="gen-file" accept="image/*,video/*" hidden>
+            <span>Drop an image or video to upload it to Higgsfield storage, or <button type="button" class="link" id="gen-pick">choose a file</button>. Its URL goes into <code>image_url</code>.</span>
+          </div>
+          <div class="actions">
+            <button class="btn btn-primary" type="submit" id="gen-submit">Send to Higgsfield</button>
+            <span class="form-error" id="gen-error" role="alert"></span>
+          </div>
+        </form>
+      </section>
+
+      <!-- jobs -->
+      <section data-panel="jobs" hidden>
+        <header class="page-head"><div><p class="eyebrow">Queue</p><h1>Jobs</h1></div><button class="btn btn-quiet" id="jobs-refresh">Refresh</button></header>
+        <div id="jobs" class="jobs"></div>
+      </section>
+
+      <!-- agent -->
+      <section data-panel="agent" hidden>
+        <header class="page-head"><div><p class="eyebrow">Premium</p><h1>Cozy Agent</h1></div></header>
+        <div class="agent">
+          <div class="agent-list card">
+            <form id="agent-new" class="stack">
+              <label>New session for
+                <select name="customerId" id="agent-customer"><option value="">Internal</option></select>
+              </label>
+              <button class="btn btn-primary btn-sm" type="submit">Start session</button>
+            </form>
+            <div id="agent-sessions" class="list"></div>
+          </div>
+          <div class="agent-chat card">
+            <div class="chat-head" id="chat-head"><span class="muted">Pick or start a session.</span></div>
+            <div class="chat-log" id="chat-log" aria-live="polite"></div>
+            <form class="composer" id="composer" hidden>
+              <textarea id="composer-text" rows="2" placeholder="e.g. Three hook ideas for a 9:16 ad about our weekend croissants, then make the best one." required></textarea>
+              <div class="composer-row">
+                <input type="file" id="composer-file" accept="image/*,video/*" hidden>
+                <button type="button" class="btn btn-quiet btn-sm" id="composer-attach">Attach</button>
+                <button type="button" class="btn btn-quiet btn-sm" id="composer-stop">Stop</button>
+                <span class="form-error" id="composer-error"></span>
+                <button class="btn btn-primary btn-sm" type="submit">Send</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- customers -->
+      <section data-panel="customers" hidden>
+        <header class="page-head"><div><p class="eyebrow">Accounts</p><h1>Customers</h1></div></header>
+        <div class="grid-2 wide-left">
+          <div id="customers" class="list card"></div>
+          <form id="cus-form" class="card stack">
+            <h2>Add customer</h2>
+            <label>Name<input name="name"></label>
+            <label>Business<input name="business"></label>
+            <label>Email<input name="email" type="email"></label>
+            <label>Plan<select name="plan" id="cus-plan"><option value="">No plan</option></select></label>
+            <details>
+              <summary>Brand file (feeds the Cozy Agent)</summary>
+              <label>What they do<textarea name="about" rows="2"></textarea></label>
+              <label>Audience<input name="audience"></label>
+              <label>Voice<input name="voice" placeholder="warm, local, a little funny"></label>
+              <label>Colors<input name="colors"></label>
+              <label>Avoid<input name="avoid"></label>
+              <label>Asset URLs (one per line)<textarea name="assets" rows="3" class="mono"></textarea></label>
+            </details>
+            <button class="btn btn-primary" type="submit">Create</button>
+            <span class="form-error" id="cus-error"></span>
+          </form>
+        </div>
+      </section>
+
+      <!-- leads -->
+      <section data-panel="leads" hidden>
+        <header class="page-head"><div><p class="eyebrow">From the site</p><h1>Leads</h1></div></header>
+        <div id="leads" class="leads"></div>
+      </section>
+
+      <!-- pricing -->
+      <section data-panel="pricing" hidden>
+        <header class="page-head"><div><p class="eyebrow">config/plans.json</p><h1>Pricing</h1></div></header>
+        <p class="muted">Draft. Edit <code>config/plans.json</code> and the landing page and credit charges follow. Model credit costs live in <code>config/models.json</code>.</p>
+        <div id="pricing" class="plans"></div>
+      </section>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

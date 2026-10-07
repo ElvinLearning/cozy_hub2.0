@@ -3,12 +3,12 @@ import sys, os
 from PIL import Image, ImageDraw
 src, out = sys.argv[1], sys.argv[2]
 cols = int(sys.argv[3]) if len(sys.argv) > 3 else 4
-names = sys.argv[4:] or sorted(f[:-4] for f in os.listdir(src) if f.endswith('.png'))
+names = sys.argv[4:] or sorted(f[:-4] for f in os.listdir(src) if f.endswith(('.png', '.jpg')))
 tw = 480
 ims = []
 for n in names:
-    p = os.path.join(src, n + '.png')
-    if os.path.exists(p):
+    p = next((os.path.join(src, n + e) for e in ('.png', '.jpg') if os.path.exists(os.path.join(src, n + e))), None)
+    if p:
         im = Image.open(p).convert('RGB')
         ims.append((n, im.resize((tw, round(im.height * tw / im.width)))))
 th = max(im.height for _, im in ims)

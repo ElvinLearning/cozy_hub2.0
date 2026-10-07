@@ -6,3 +6,4 @@ workbench/**/frames/
 workbench/**/*.png.tmp
 *.log
 node_modules
+workbench/shots/

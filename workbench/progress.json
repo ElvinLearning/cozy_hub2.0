@@ -1,0 +1,67 @@
+{
+ "rounds": [
+  {
+   "id": "round-01",
+   "critic": "fresh agent",
+   "date": "2026-10-07",
+   "summary": "The story holds together (logo ring, then the pixel stream through the ring, then the film), the display type pairing is consistent, and the desktop hero and dissolve-mid frames are genuinely attractive. What holds the page below award tier is layout collisions: text slides under the transparent nav, the 3D and the prints sit on top of copy on mobile, particles cover the agent copy, and the mobile iris is broken. The chrome loop is also a thin V-shaped ribbon that falls short of the chunky iridescent tube in the reference art.",
+   "scores": [
+    {
+     "id": "hero",
+     "score": 6,
+     "gap": "Mobile hero (390x844): the ring and chrome loop sit directly behind the eyebrow, body copy and both CTAs. The ring stroke cuts through 'COZY DIGITAL \u00b7 AI VIDEO STUDIO' and 'Plans from $40', and the chrome highlights flicker behind 'Send us your photos...', while the top ~300px of the screen is empty black. Fixed: the ring and loop sit in the upper part of the screen (about y 70-400) as their own composition, and the headline, copy and buttons sit below on clean dark ground, so no stroke or highlight touches any text."
+    },
+    {
+     "id": "iris",
+     "score": 4,
+     "gap": "Mobile iris: the ring is off-centre and too large, so only one blurred cyan arc crosses the top third (y\u2248250-380) above ~450px of empty black. It reads as a horizon line, not as passing through a portal, and nothing shows where you land. Fixed: the ring is centred on the phone viewport and frames the screen on all sides as it scales past the camera, with the studio scene (the prints) already visible and growing inside the opening."
+    },
+    {
+     "id": "assets",
+     "score": 5,
+     "gap": "Mobile assets: the prints pile onto the copy. The boardroom print sits across 'Send us what you already have.', the main print overlaps the '01 \u00b7 YOU SEND' eyebrow and runs off the left edge. Fixed: on mobile the print stack occupies its own band above the text (about y 90-420, fully inside the 16px gutters), and the eyebrow, headline and body start below it with clear space."
+    },
+    {
+     "id": "dissolve",
+     "score": 6,
+     "gap": "dissolve-mid and dissolve-late, both viewports: the section headline 'We turn it into film.' is parked at y\u224840-100, directly under the 'cozy digital' logo and the nav pill, with 'film.' half hidden behind the pill. Every frame of the signature moment therefore carries a visible collision at the top. Fixed: the headline either stays pinned clear of the nav (top edge at or below about y 120 on desktop and 90 on mobile) for the whole sequence, or leaves the frame completely before the stream starts, so the top band stays clean while the pixels travel through the ring."
+    },
+    {
+     "id": "handoff",
+     "score": 5,
+     "gap": "Mobile film-full: the 16:9 clip is centre-cropped to 390x844 so that only the woman's chin and green top fill the screen. Her eyes are above the frame and the upscaled footage looks soft and blocky, so the film taking over the page reads as a bad crop, not a cinematic takeover. Fixed: the full-bleed crop is anchored on her face (eyes at about one third of the screen height), or a vertical version of the clip is used on mobile, and the footage is sharp at that size."
+    },
+    {
+     "id": "reel",
+     "score": 5,
+     "gap": "Desktop reel: the grid has a hole. The right column ends after 'Bar, city lights' (y\u2248222) and stays empty until 'Late-night desk' (y\u2248491), about 270px of black beside the big storefront tile, and in the middle column the karate tile and the tile below it touch with no gutter. It looks like a broken masonry layout, not an editorial one. Fixed: every column filled to a shared rhythm with the same gutter on every edge, no empty cells, and rows ending flush."
+    },
+    {
+     "id": "agent",
+     "score": 6,
+     "gap": "Desktop agent: the swarm particles and the violet light streak are drawn over the body copy and bullets, so words are partly erased: 'brand file' reads 'brand ile', 'written for you' reads 'written or you', and 'the cuts' / 'Then it writes' are overdrawn. Fixed: the swarm is kept out of the text column (masked or pushed to x>520), or rendered behind a dark scrim there, so every word of the copy and bullets sits on clean dark ground at full contrast."
+    },
+    {
+     "id": "pricing",
+     "score": 6,
+     "gap": "Mobile pricing: the featured Cozy Agent plan is the third card, two screens down. The pricing state shows only Starter and half of Growth, so on a phone the featured plan is not visible at all. Fixed: on mobile the Cozy Agent card leads (or the cards sit in a horizontal snap row that opens on Cozy Agent with its neighbours peeking in), so the 'MOST LOVED' badge, gradient border and cyan CTA are on screen in the pricing state."
+    },
+    {
+     "id": "start",
+     "score": 5,
+     "gap": "Desktop start/end: the closing loop is cut in half by the form card. Its chrome ribbon is sliced by a hard vertical edge at x\u2248735, and its ring stroke runs through 'We'll come back' in the intro copy (the same overlap appears on mobile, where the ring and pixels cross 'We'll come back with your'). The story's closing image reads as a leftover behind a form. Fixed: the loop is fully visible as its own object, for example in the left column below the copy (about x 60-680, y 320-720) at slightly reduced intensity, touching neither the copy nor the form card."
+    },
+    {
+     "id": "chrome",
+     "score": 5,
+     "gap": "The nav has no backdrop, so in mid-page states content slides straight under the logo and the CTA pill. Pricing: 'one simple plan.' runs under 'cozy digital' and 'Video every month' is sliced by the viewport top. Mobile agent: the body copy sits behind the logo. End: 'Let's make' sits under the logo, and the '03 \u00b7 THE COZY AGENT' and '05 \u00b7 START' eyebrows crowd against it. Fixed: once the page leaves the hero, a dark blurred scrim (near-black #08090b at about 70% with backdrop blur, about 72px desktop / 64px mobile) sits behind the nav, and no state places text inside that band."
+    }
+   ],
+   "sheets": [
+    "rounds/round-01/desktop-sheet.jpg",
+    "rounds/round-01/mobile-sheet.jpg"
+   ],
+   "fixes": "Fixed: soft pins now settle where a hard pin would (centred ramps) - headline clears the nav; phone camera paths for hero/studio/agent/closing loop (ring above copy, stream followed along x, film fitted to width); nav scrim; agent copy scrim; reel grid rebuilt on 12 columns with no holes; featured plan leads on phones; closing loop moved to its own space; end-state crash fixed (stale camera keys)."
+  }
+ ]
+}
