@@ -193,3 +193,9 @@ test('mediaUrls finds urls in any result shape', () => {
   assert.deepEqual(mediaUrls({ video: { url: 'https://a/b.mp4' }, status_url: 'https://a/requests/1/status' }), ['https://a/b.mp4']);
   assert.deepEqual(mediaUrls({ images: [{ url: 'https://a/1' }, { url: 'https://a/2.png' }] }), ['https://a/1', 'https://a/2.png']);
 });
+
+test('unknown pages get the branded 404 with a 404 status', async () => {
+  const r = await fetch(`${base}/no-such-page`);
+  assert.equal(r.status, 404);
+  assert.match(await r.text(), /didn't load/);
+});

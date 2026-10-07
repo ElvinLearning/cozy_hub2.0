@@ -46,7 +46,7 @@ export function safeJoin(root, urlPath) {
   return full;
 }
 
-export async function serveFile(req, res, file, { cache = 'public, max-age=300' } = {}) {
+export async function serveFile(req, res, file, { cache = 'public, max-age=300', status = 200 } = {}) {
   let st;
   try {
     st = await stat(file);
@@ -65,12 +65,12 @@ export async function serveFile(req, res, file, { cache = 'public, max-age=300' 
     ETag: etag,
     'Cache-Control': file.endsWith('.html') ? 'no-cache' : cache,
   };
-  if (req.headers['if-none-match'] === etag) {
+  if (status === 200 && req.headers['if-none-match'] === etag) {
     res.writeHead(304, headers);
     res.end();
     return true;
   }
-  const range = req.headers.range;
+  const range = status === 200 ? req.headers.range : null;
   if (range) {
     const m = /^bytes=(\d*)-(\d*)$/.exec(range.trim());
     let start, end;
@@ -93,7 +93,7 @@ export async function serveFile(req, res, file, { cache = 'public, max-age=300' 
     createReadStream(file, { start, end }).on('error', () => res.destroy()).pipe(res);
     return true;
   }
-  res.writeHead(200, { ...headers, 'Content-Length': st.size });
+  res.writeHead(status, { ...headers, 'Content-Length': st.size });
   if (req.method === 'HEAD') return res.end(), true;
   createReadStream(file).on('error', () => res.destroy()).pipe(res);
   return true;

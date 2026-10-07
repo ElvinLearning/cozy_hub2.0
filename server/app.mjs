@@ -483,9 +483,8 @@ export function createApp(opts = {}) {
       }
       const file = safeJoin(publicDir, path === '/' ? '/index.html' : path);
       if (file && (await serveFile(req, res, file, { cache: /\/(vendor|fonts|media|brand)\//.test(path) ? 'public, max-age=604800' : 'public, max-age=300' }))) return;
-      const nf = join(publicDir, '404.html');
-      res.statusCode = 404;
-      if (!(await serveFile(req, res, nf).catch(() => false))) {
+      if (!(await serveFile(req, res, join(publicDir, '404.html'), { status: 404 }).catch(() => false))) {
+        res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
         res.end('Not found');
       }
     } catch (e) {

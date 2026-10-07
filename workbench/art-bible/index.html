@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cozy Art Bible</title>
+<style>
+@font-face{font-family:"Inter Tight";src:url(../../public/fonts/inter-tight-latin-wght-normal.woff2) format("woff2");font-weight:100 900}
+@font-face{font-family:"Instrument Serif";src:url(../../public/fonts/instrument-serif-latin-400-italic.woff2) format("woff2");font-style:italic}
+@font-face{font-family:Quicksand;src:url(../../public/fonts/quicksand-latin-700-normal.woff2) format("woff2");font-weight:700}
+:root{--bg:#08090b;--panel:#121418;--ink:#edf0ed;--muted:#9aa09c;--line:#ffffff1f;--cyan:#67e8f9;--indigo:#818cf8;--violet:#c084fc}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 Inter,system-ui,sans-serif}
+main{max-width:1180px;margin:auto;padding:40px 20px 80px;display:grid;gap:44px}
+h1{font:600 44px/1 "Inter Tight",sans-serif;letter-spacing:-.04em;margin:0}h2{font:600 22px "Inter Tight";letter-spacing:-.02em;margin:0 0 14px}
+em{font-family:"Instrument Serif";font-weight:400;background:linear-gradient(100deg,var(--violet),var(--indigo),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}
+.sw{height:84px;border-radius:10px;margin-bottom:8px;border:1px solid var(--line)}
+img{max-width:100%;display:block;border-radius:10px}
+table{width:100%;border-collapse:collapse;font-size:13.5px}td,th{border-bottom:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}th{color:var(--muted);font-weight:500}
+code{font-size:12.5px;color:#cfd5d0}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:700px){.pair{grid-template-columns:1fr}}
+</style></head><body><main>
+<header><p class="muted">Cozy Digital · art bible</p><h1>Your business, <em>in motion.</em></h1></header>
+
+<section><h2>The brief, as filled in</h2>
+<table>
+<tr><th>Concept</th><td>Cozy Digital sells monthly AI video to businesses. One-line story as you scroll: <b>your photos go into the Cozy ring, break into the logo's pixels, and come out as film.</b></td></tr>
+<tr><th>Reference to beat</th><td>Cozy Digital's own current hero art and logo (from the <code>kaysongt/cozydigital-site</code> repo). The live site was not reachable from the build environment, and no third-party reference site was named.</td></tr>
+<tr><th>Style</th><td>Chrome and glass, product CGI, on a near-black stage. Cinematic motion, not maximal.</td></tr>
+<tr><th>Signature moment</th><td>A print of the customer's photo breaks cell by cell into the logo's pixel squares. They fly through the open ring and land as that same shot, playing.</td></tr>
+<tr><th>3D</th><td>Procedural only: a swept ribbon, tori, instanced cubes, and a PMREM environment baked once from brand-coloured softboxes.</td></tr>
+<tr><th>Image budget</th><td><b>$0 spent.</b> No image generation was run. No Replicate key was available, and no Higgsfield credits were used without an OK. Footage is Cozy Digital's existing AI reel.</td></tr>
+<tr><th>Targets</th><td>Desktop first, with phones as a first-class layout (own camera paths per chapter). Adaptive resolution live.</td></tr>
+<tr><th>No-go</th><td>No other brand's marks. No invented results, testimonials or client names. Higgsfield is not named on the public page.</td></tr>
+<tr><th>Interview</th><td>Skipped: the owner was away and asked for the build. The palette and logo were fixed by the request ("colors the same, logo about the same"). No three-way style frame was rendered. The direction follows the existing brand art.</td></tr>
+</table></section>
+
+<section><h2>Palette</h2><div class="grid">
+<div class="card"><div class="sw" style="background:#08090b"></div><b>Ink black</b> <code>#08090b</code><br><span class="muted">cozydigital.org --studio-bg</span></div>
+<div class="card"><div class="sw" style="background:#67e8f9"></div><b>Cyan</b> <code>#67e8f9</code><br><span class="muted">site accent, logo ring (lower right)</span></div>
+<div class="card"><div class="sw" style="background:#818cf8"></div><b>Indigo</b> <code>#818cf8</code><br><span class="muted">logo ring (middle)</span></div>
+<div class="card"><div class="sw" style="background:#c084fc"></div><b>Violet</b> <code>#c084fc</code><br><span class="muted">logo ring (upper left), sampled</span></div>
+<div class="card"><div class="sw" style="background:linear-gradient(90deg,#c084fc,#818cf8,#67e8f9)"></div><b>Ring gradient</b><br><span class="muted">upper-left to lower-right, as on the logo</span></div>
+<div class="card"><div class="sw" style="background:#edf0ed"></div><b>Paper</b> <code>#edf0ed</code><br><span class="muted">--studio-ink</span></div>
+</div></section>
+
+<section><h2>Type</h2><div class="card">
+<p style="font:560 56px/1 'Inter Tight';letter-spacing:-.045em;margin:0">Work that stops <em>the scroll.</em></p>
+<p class="muted">Inter Tight (display) with Instrument Serif italic accents in the ring gradient. Inter for text. Quicksand Bold only in the wordmark and the agent's name.</p>
+<p style="font:700 28px Quicksand;margin:0">cozy digital · Cozy Agent</p></div></section>
+
+<section><h2>Logo: original and modernised</h2><div class="pair">
+<div class="card"><img src="../reference/logo-original-600.png" alt="original logo"><p class="muted">Original: glowing glass ring, stacked wordmark, pixel scatter top right.</p></div>
+<div class="card" style="background:#08090b"><img src="../../public/brand/cozy-logo-badge.svg" alt="modernised badge"><p class="muted">Modernised: the same ring, colours and Quicksand wordmark, drawn flat as pure paths. The ring now <b>opens</b> at the upper right and breaks into the pixels, so the loop literally turns digital. Built by <code>tools/build-logo.mjs</code>.</p></div>
+</div>
+<div class="grid" style="margin-top:14px">
+<div class="card"><img src="../../public/brand/cozy-logo-horizontal.svg" alt="" style="height:48px;width:auto"><p class="muted">Horizontal lockup (nav)</p></div>
+<div class="card"><img src="../../public/brand/cozy-mark.svg" alt="" style="height:64px;width:auto"><p class="muted">Mark</p></div>
+<div class="card"><img src="../../public/brand/cozy-favicon.svg" alt="" style="height:48px;width:auto"><p class="muted">Favicon: heavier ring, four pixels</p></div>
+</div></section>
+
+<section><h2>The chosen direction</h2><div class="pair">
+<div class="card"><img src="../reference/hero-art-cozydigital.jpg" alt=""><p class="muted">The bar: cozydigital.org hero art (still image).</p></div>
+<div class="card"><img src="../../public/brand/og-image.jpg" alt=""><p class="muted">Ours: a live chrome figure-eight threaded through the open logo ring, shedding pixels, with HDR bloom.</p></div>
+</div></section>
+
+<section><h2>Every asset and where it came from</h2>
+<table><tr><th>Asset</th><th>Source</th><th>Prompt / recipe</th></tr>
+<tr><td>Logo marks (SVG)</td><td>Generated by code</td><td><code>tools/build-logo.mjs</code>: Quicksand Bold outlines (opentype.js) plus a parametric ring and pixel scatter. No AI prompt.</td></tr>
+<tr><td>Chrome loop</td><td>Procedural</td><td>Gerono lemniscate split in depth, with an elliptical cross-section swept and twisted 3 half-turns (<code>gfx/brand.js</code>). Physical material with iridescence, lit by the baked environment.</td></tr>
+<tr><td>Studio environment</td><td>Procedural, baked once</td><td>Black room with a violet key strip, a cyan rim strip, an indigo floor wash and a white top line, through PMREM.</td></tr>
+<tr><td>Rings, pixels, orb, swarm</td><td>Procedural</td><td>Emissive torus with the brand gradient by angle and an animated gap. Instanced rounded cubes. Chrome sphere.</td></tr>
+<tr><td>Reel clips + posters</td><td>cozydigital.org repo (<code>public/videos/reel</code>)</td><td>Existing Cozy Digital AI footage. Re-encoded to VP9 WebM next to each MP4 for browsers without H.264.</td></tr>
+<tr><td>Print photo</td><td>First frame of <code>shot-06.mp4</code></td><td><code>ffmpeg -vf select=eq(n\,0)</code>, so the photo and the film are the same image.</td></tr>
+<tr><td>"Your logo" card</td><td>Canvas 2D at runtime</td><td>A placeholder stamp in Quicksand and Inter.</td></tr>
+<tr><td>OG image, icons</td><td>Rendered from the live page / SVG marks</td><td><code>tools/brand-png.mjs</code></td></tr>
+</table></section>
+</main></body></html>
