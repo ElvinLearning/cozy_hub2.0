@@ -7,6 +7,7 @@
 //   HF_KEY            "key_id:key_secret" from cloud.higgsfield.ai (or HF_API_KEY + HF_API_SECRET)
 //   HF_BASE_URL       default https://api.higgsfield.ai
 //   PUBLIC_URL        https://your-domain, enables Higgsfield completion webhooks
+//   DATA_DIR          default ./data (JSON store + uploaded client assets)
 import { createServer } from 'node:http';
 import { randomBytes } from 'node:crypto';
 import { readFileSync, existsSync } from 'node:fs';
@@ -32,7 +33,7 @@ if (!adminPassword) {
   console.log(`\n  ADMIN_PASSWORD not set. One-time admin password for this run: ${adminPassword}\n`);
 }
 
-const app = createApp({ root, adminPassword, hfKey: credentialFromEnv() });
+const app = createApp({ root, adminPassword, hfKey: credentialFromEnv(), dataDir: process.env.DATA_DIR || undefined });
 const port = Number(process.env.PORT) || 8080;
 const server = createServer(app);
 server.keepAliveTimeout = 65_000;

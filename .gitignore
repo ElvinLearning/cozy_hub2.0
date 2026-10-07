@@ -5,3 +5,4 @@ data/*.json
 workbench/**/frames/
 workbench/**/*.png.tmp
 *.log
+node_modules
