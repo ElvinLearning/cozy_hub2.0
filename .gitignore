@@ -1,0 +1,7 @@
+node_modules/
+data/*.json
+!data/.gitkeep
+.env
+workbench/**/frames/
+workbench/**/*.png.tmp
+*.log
