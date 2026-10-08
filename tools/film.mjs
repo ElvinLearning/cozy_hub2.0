@@ -78,6 +78,8 @@ const ffDone = new Promise((r) => ff.on('close', r));
 // Playwright 1.56's paused clock never fires requestAnimationFrame, so the
 // page hands its frame loop to us: one __app.step(1/60) per video frame.
 await page.evaluate(() => (window.__app.manual(true), window.__app.restartIntro()));
+// the first capture at a new size warms up the software compositor (~100 s at 1080p); do it off the clock
+await page.screenshot({ type: 'png', timeout: 600000 });
 let lastS = -1;
 const t0 = Date.now();
 const log = [];
@@ -93,7 +95,7 @@ for (let f = 0; f < frames; f++) {
   await Promise.race([page.evaluate((t) => window.__app.seekMedia(t), vt), new Promise((r) => setTimeout(r, 4000))]);
   await page.clock.runFor(FRAME_MS); // page timers and Date move in lockstep
   await page.evaluate((dt) => window.__app.step(dt), 1 / FPS);
-  const png = await page.screenshot({ type: 'png' });
+  const png = await page.screenshot({ type: 'png', timeout: 180000 });
   if (!ff.stdin.write(png)) await new Promise((r) => ff.stdin.once('drain', r));
   log.push({ f, s: +sv.toFixed(4), t: +vt.toFixed(3), job: await page.evaluate(() => window.__app.job?.a + (window.__app.job?.b ? '>' + window.__app.job.b : '')) });
   if (f % 60 === 0) {
