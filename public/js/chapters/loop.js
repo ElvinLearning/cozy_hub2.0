@@ -48,7 +48,7 @@ export class LoopChapter {
 
     // the chrome loop, threaded through the ring
     this.chrome = chromeMaterial(env);
-    const geo = ribbonGeometry(loopCurve(0.82), { segments: quality.low ? 360 : 720, radial: quality.low ? 32 : 56, a: 0.31, b: 0.2, halfTurns: 3 });
+    const geo = ribbonGeometry(loopCurve(0.82), { segments: quality.low ? 360 : 720, radial: quality.low ? 32 : 56, a: 0.27, b: 0.22, halfTurns: 3 });
     this.loop = new THREE.Mesh(geo, this.chrome);
     // tilted ~50 degrees so the figure-eight reads, crossing the ring's plane inside its hole
     this.loop.rotation.set(0.3, 0.62, 0.2);
@@ -142,11 +142,11 @@ export class LoopChapter {
       // pixels drift outward along the open arc and recycle
       const life = (p.out + t * (0.025 + 0.02 * p.spin * p.spin) + open * 0.35) % 1;
       const ang = p.a + (life - 0.5) * 0.15;
-      const r = RING_R + 0.05 + life * (0.55 + 0.6 * open) + p.z * 0.4;
+      const r = RING_R + 0.05 + life * (0.38 + 0.3 * open) + p.z * 0.3;
       // pixels near the arc ends sit tight; they spread as they leave
       const inGap = Math.abs(((ang - 0.72 + Math.PI) % (2 * Math.PI)) - Math.PI) < gap * 0.6;
       const sz = p.size * (1 - smoothstep(0.75, 1.0, life)) * smoothstep(0.0, 0.08, life) * (inGap || life > 0.25 ? 1 : 0.6);
-      d.position.set(Math.cos(ang) * r, Math.sin(ang) * r + life * 0.25, p.z + life * p.spin * 0.4);
+      d.position.set(Math.cos(ang) * r + life * 0.12, Math.sin(ang) * r, p.z + life * p.spin * 0.4);
       d.rotation.set(t * p.spin * 0.5, t * p.spin * 0.3 + i, 0);
       d.scale.setScalar(Math.max(sz, 1e-4));
       d.updateMatrix();

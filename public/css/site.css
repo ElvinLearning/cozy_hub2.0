@@ -98,7 +98,7 @@ h2.display { font-size: clamp(2.5rem, 5.6vw, 5.6rem); }
 /* agent */
 .agent-grid { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 6vw; padding: 90px clamp(20px, 5vw, 80px) 40px; }
 /* scrim: the copy column always sits on clean dark ground, whatever the swarm does */
-.agent-grid::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #08090bf0 0%, #08090bcc 30%, #08090b00 47%); pointer-events: none; }
+.agent-grid::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #08090bf0 0%, #08090bcc 30%, #08090b00 47%); pointer-events: none; opacity: var(--scrim, 0); }
 .agent-grid > * { position: relative; }
 .agent-grid .side-copy { position: static; translate: none; grid-column: 1; grid-row: 1; justify-self: start; max-width: 460px; }
 .ticks { list-style: none; padding: 0; margin: 26px 0 30px; display: grid; gap: 10px; color: var(--ink); }
@@ -127,10 +127,12 @@ h2.display { font-size: clamp(2.5rem, 5.6vw, 5.6rem); }
 .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; }
 .plan { position: relative; display: flex; flex-direction: column; gap: 18px; padding: 30px; border-radius: 20px; border: 1px solid var(--line); background: linear-gradient(180deg, #ffffff0b, #ffffff03); backdrop-filter: blur(16px); }
 .plan.featured { border-color: transparent; background: radial-gradient(120% 70% at 50% 0%, #818cf826, transparent 60%) padding-box, linear-gradient(#15171d, #101216) padding-box, linear-gradient(140deg, var(--violet), var(--indigo), var(--cyan)) border-box; box-shadow: 0 40px 110px #818cf826, 0 0 0 1px #ffffff08; transform: translateY(-14px) scale(1.025); z-index: 1; }
-.plan.featured::after { content: ""; position: absolute; z-index: -1; width: 260px; height: 260px; top: -118px; right: -86px; border-radius: 50%; pointer-events: none;
+.plan.featured { overflow: hidden; }
+.plan.featured .tag { top: 18px; right: 18px; }
+.plan.featured::after { content: ""; position: absolute; z-index: -1; width: 240px; height: 240px; top: -96px; right: -96px; border-radius: 50%; pointer-events: none;
   background: conic-gradient(from 200deg, var(--violet), var(--indigo), var(--cyan), transparent 70%, transparent 82%, var(--violet));
   -webkit-mask: radial-gradient(closest-side, transparent 93%, #000 94%, #000 98%, transparent 99%); mask: radial-gradient(closest-side, transparent 93%, #000 94%, #000 98%, transparent 99%);
-  filter: drop-shadow(0 0 10px #818cf8aa); opacity: .85; }
+  filter: drop-shadow(0 0 10px #818cf8aa); opacity: .55; }
 .plans { padding-top: 18px; }
 .plan .tag { position: absolute; top: -12px; right: 24px; padding: 5px 11px; border-radius: 99px; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--on-accent); background: linear-gradient(90deg, var(--violet), var(--cyan)); }
 .plan h3 { margin: 0; font: 600 20px var(--font-display); letter-spacing: -.02em; }
@@ -149,8 +151,10 @@ h2.display { font-size: clamp(2.5rem, 5.6vw, 5.6rem); }
 .start-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(30px, 6vw, 100px); align-items: start; }
 .lead { display: grid; gap: 16px; padding: clamp(20px, 3vw, 34px); border-radius: 22px; border: 1px solid #ffffff1f; background: #0c0d11d9; backdrop-filter: blur(18px); }
 .lead label { display: grid; gap: 8px; font-size: 13px; font-weight: 500; color: var(--muted); }
-.lead label small { color: var(--dim); font-weight: 400; }
-.lead input, .lead select, .lead textarea { width: 100%; padding: 13px 14px; border-radius: 10px; border: 1px solid var(--line); background: #08090b; color: var(--ink); font: 15px var(--font); }
+.lead label small { color: var(--dim); font-weight: 400; margin-left: 6px; }
+.lead label > span { display: block; }
+.lead input, .lead select, .lead textarea { width: 100%; padding: 13px 14px; border-radius: 10px; border: 1px solid #ffffff26; background: #121419; color: var(--ink); font: 15px var(--font); }
+.lead ::placeholder { color: #6b716d; }
 .lead input:focus, .lead select:focus, .lead textarea:focus { outline: none; border-color: #67e8f999; box-shadow: 0 0 0 3px #67e8f922; }
 .lead .two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .hp { position: absolute !important; left: -9999px; width: 1px; height: 1px; overflow: hidden; }

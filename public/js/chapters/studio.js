@@ -53,7 +53,7 @@ function printMaterial({ map, aspect, dissolve = false, grid = [48, 27] }) {
         vec2 inner = vec2(uAspect, 1.0) * 0.5 - border;
         float di = rbox(p, inner, 0.012);
         vec2 puv = (p / (inner * 2.0)) + 0.5;
-        vec3 photo = texture(tMap, clamp(puv, 0.0, 1.0)).rgb * 0.9;
+        vec3 photo = pow(texture(tMap, clamp(puv, 0.0, 1.0)).rgb, vec3(0.82)) * 1.05; // phone-style lifted shadows
         // matte, warm paper that sits under the bloom threshold, with fibre noise
         // and a soft raking light from the upper left, so prints read as paper, not panels
         float fibre = hash12(floor(vUv * vec2(uAspect, 1.0) * 420.0)) * 0.05;
@@ -131,7 +131,7 @@ function pixelFlightMaterial({ photo, video, grid }) {
         vec3 local = orient * (R * (position * size * vec3(0.9, 0.9, 0.14)));
         vN = normalize(mat3(modelViewMatrix) * orient * R * normal);
 
-        vec3 photo = textureLod(tPhoto, c, 0.0).rgb;
+        vec3 photo = pow(textureLod(tPhoto, c, 0.0).rgb, vec3(0.82)) * 1.05;
         vec3 film = textureLod(tVideo, c, 0.0).rgb;
         // photo colour while it is still the print, brand light in the air, film colour as it locks in
         vec3 hue = brand(clamp(c.x * 0.6 + seed * 0.4, 0.0, 1.0));
@@ -347,11 +347,17 @@ export class StudioChapter {
       const P = T.film.portrait;
       const tanV = Math.tan((cam.fov * Math.PI) / 360);
       const pt = clamp((s - T.dissolve.progress[0]) / (T.dissolve.progress[1] - T.dissolve.progress[0]), 0, 1);
-      const x = lerp(this.cards[0].home[0], SCREEN.pos.x, smootherstep(0.08, 0.92, pt));
+      // three framings: the prints; the ring with the stream passing through it (wide);
+      // the film. The ring stays whole on screen for the whole crossing.
+      const toRing = smootherstep(T.assets.copyOut[0], T.dissolve.progress[0] + 0.15, s);
+      const toFilm = smootherstep(0.62, 0.95, pt);
+      const ringView = RING.pos.x + 0.55; // ring left of centre, the forming film peeking in on the right
+      const x = lerp(lerp(this.cards[0].home[0], ringView, toRing), SCREEN.pos.x, toFilm);
       const dPrints = P.printHalfWidth / (tanV * cam.aspect);
+      const dRing = (RING.r * 2.3) / (tanV * cam.aspect);
       const dScreen = ((SCREEN.w / 2) * P.screenPad) / (tanV * cam.aspect);
       const dCover = ((SCREEN.h / 2) * 0.97) / tanV; // film height fills the phone; crop the sides
-      const d = lerp(lerp(dPrints, dScreen, smoothstep(0.55, 1.0, pt)), dCover, smootherstep(T.film.pushIn[0], T.film.pushIn[1], s));
+      const d = lerp(lerp(lerp(dPrints, dRing, toRing), dScreen, toFilm), dCover, smootherstep(T.film.pushIn[0], T.film.pushIn[1], s));
       const ny = lerp(lerp(P.ndcY.assets, P.ndcY.dissolve, smoothstep(T.assets.copyOut[0], T.dissolve.pin[0], s)), P.ndcY.film, smoothstep(T.film.videoIn[0], T.film.pushIn[0], s));
       const oy = ny * tanV * d * (1 - smoothstep(T.film.pushIn[0], T.film.pushIn[1], s));
       cam.position.set(x + pointer[0] * 0.08, 0.05 * (1 - smoothstep(T.film.pushIn[0], T.film.pushIn[1], s)) - oy, d);

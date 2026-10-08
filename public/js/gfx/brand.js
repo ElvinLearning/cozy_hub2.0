@@ -26,13 +26,13 @@ export function bakeEnvironment(renderer) {
   // broad softboxes, so reflections sweep across whole surfaces instead of
   // pinging as clipped dots: violet key left, cyan rim right, indigo below,
   // a dim indigo field behind the camera so faces toward the viewer are never dead black
-  box(3.6, 10, COLORS.violet, 3.0, [-6, 0.5, 3.0]);
-  box(3.2, 10, COLORS.cyan, 3.2, [6, 0, -2.5]);
-  box(16, 3.5, COLORS.indigo, 1.4, [0, -6, 1]);
-  box(10, 0.6, new THREE.Color(1, 1, 1), 5.0, [0, 6.5, 1.5]);
-  box(12, 7, COLORS.indigo, 0.32, [0, 0.5, 9]);
-  box(2.5, 1.2, new THREE.Color(0.75, 0.85, 1), 1.3, [1.5, 1.5, 8]);
-  box(9, 5, COLORS.violet, 0.6, [-2, 1, -8]);
+  box(1.8, 10, COLORS.violet, 3.4, [-6, 0.5, 3.0]);
+  box(1.6, 10, COLORS.cyan, 3.6, [6, 0, -2.5]);
+  box(16, 2.0, COLORS.indigo, 1.2, [0, -6, 1]);
+  box(10, 0.35, new THREE.Color(1, 1, 1), 3.2, [0, 6.5, 1.5]);
+  box(12, 7, COLORS.indigo, 0.1, [0, 0.5, 9]);
+  box(2.0, 0.8, new THREE.Color(0.75, 0.85, 1), 0.8, [1.5, 1.5, 8]);
+  box(9, 5, COLORS.violet, 0.4, [-2, 1, -8]);
   const pmrem = new THREE.PMREMGenerator(renderer);
   const rt = pmrem.fromScene(scene, 0.035);
   pmrem.dispose();
@@ -43,7 +43,7 @@ export function bakeEnvironment(renderer) {
 export function chromeMaterial(env, overrides = {}) {
   return new THREE.MeshPhysicalMaterial({
     // black chrome = a bright mirror in a dark room (F0 high), not a dark metal
-    color: new THREE.Color(0.7, 0.7, 0.76),
+    color: new THREE.Color(0.46, 0.46, 0.52),
     metalness: 1,
     roughness: 0.12,
     envMap: env,
@@ -125,6 +125,10 @@ export function loopCurve(scale = 1) {
 export function ringMaterial() {
   return new THREE.ShaderMaterial({
     glslVersion: THREE.GLSL3,
+    // additive light: a fading ring goes transparent, never an opaque dark sliver
+    transparent: true,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false,
     uniforms: { uGlow: { value: 4.0 }, uOpen: { value: 0.8 }, uGapAt: { value: 0.72 }, uFade: { value: 1.0 } },
     vertexShader: /* glsl */ `
       out vec3 vLocal; out vec3 vN; out vec3 vView;
@@ -147,7 +151,7 @@ export function ringMaterial() {
         float ang = atan(vLocal.y, vLocal.x); // -pi..pi, 0 = +x
         // distance (radians) from the gap centre, wrapped
         float d = abs(mod(ang - uGapAt + 3.14159265, 6.2831853) - 3.14159265);
-        if (d < uOpen * 0.5) discard;
+        if (d < uOpen * 0.5 || uFade < 0.002) discard;
         // gradient runs from upper-left (violet) to lower-right (cyan), as on the logo
         float g = clamp(0.5 - 0.35 * (vLocal.y - vLocal.x) / max(length(vLocal.xy), 1e-3), 0.0, 1.0);
         vec3 col = brand(g);

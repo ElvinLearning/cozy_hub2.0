@@ -188,6 +188,69 @@
     "rounds/round-03/mobile-sheet.jpg"
    ],
    "fixes": "Rebuilt agent-enter (stuck 2 rounds): the swarm now converges out of the whole view into orbit while the orb grows, no 2D mosaic. Hero copy clears before the ring moves; iris opens earlier with a crisp rim and lands close on a print already arriving; prints are matte paper with contact shadows; logo card is a sample business; dissolve headline leaves before the ring rises; film push-in capped with grain/vignette; reel tall tile is a single shot; featured plan raised with the agent ring; closing image mirrors the hero; display tracking loosened."
+  },
+  {
+   "id": "round-04",
+   "critic": "fresh agent",
+   "date": "2026-10-08",
+   "summary": "A coherent, on-palette page with a real signature moment: the photo-to-pixels-to-film dissolve reads on desktop and the type system (tight grotesk plus gradient italic serif) holds together. It is held back from award tier by the hero loop's material (glossy lavender glass, not black chrome), an iris that reads as a flat circular mask wipe, a low-bitrate film at full frame, a broken-looking agent-enter frame, and several small collisions: the ring slicing pricing copy on mobile, pixel cubes behind the nav CTA, a print butting into the assets copy.",
+   "scores": [
+    {
+     "id": "hero",
+     "score": 6,
+     "gap": "hero/intro, both viewports, right half: the loop body renders as translucent periwinkle/lavender glass with a blown cyan-white hotspot on the left lobe (desktop ~x850,y380), and the left lobe pinches into a flat knife-edge crease. It does not read as the inky black chrome of reference/crop-loop-material.png. Fixed: the body sits near #08090b, the colour lives only in narrow, crisp violet/cyan reflection bands along the edges, and the tube is thick and rounded all the way around with no flat fold."
+    },
+    {
+     "id": "iris",
+     "score": 5,
+     "gap": "iris, desktop: the inside of the ring is a uniform flat navy disc with one skewed print pasted in, and the ring is a face-on neon outline with a doubled mask edge on the left (~x260-330), so it reads as a circular mask wipe, not a fly-through. The chrome loop has also vanished. Fixed: the ring is seen at an angle with its chrome tube sweeping past the camera (as the mobile frame starts to do), the prints sit on 2-3 depth layers inside with parallax, and the landing studio space is lit rather than a flat fill."
+    },
+    {
+     "id": "assets",
+     "score": 6,
+     "gap": "assets, desktop and mobile: the prints read as dark cinematic film stills, not the customer's own phone photos. The main print's lower ~45% is crushed to black, and none of the prints shows the 'products on the counter' the copy promises. Fixed: brighter, slightly imperfect phone-style exposures, including at least one product-on-counter and one shopfront-by-day shot, so the cluster reads as a camera roll. Keep the hero print as the same shot that becomes the film."
+    },
+    {
+     "id": "dissolve",
+     "score": 7,
+     "gap": "Mobile (390px): the ring is mostly off the right edge in dissolve-start and only a sliver at the left edge in dissolve-late, so the photo never visibly passes through it and the signature reduces to a pixelating rectangle. Fixed: on mobile, keep the full ring on screen, centred and smaller, with the stream entering one side of the opening and the mosaic assembling just past it, as dissolve-mid already almost does."
+    },
+    {
+     "id": "handoff",
+     "score": 6,
+     "gap": "film-full, both viewports: at full frame the clip is visibly low-bitrate. There is macroblocking in the dark bar back (desktop right third, ~x1150-1360, y350-650), and on mobile the image is soft and upscaled. The moment the film 'becomes the page' looks cheaper than the prints before it. Fixed: a high-bitrate encode of at least 1080p (with a matching poster frame) so full frame shows clean gradients and sharp detail."
+    },
+    {
+     "id": "reel",
+     "score": 6,
+     "gap": "reel, desktop: a generic bento of rounded cards with identical grey pill captions and no editorial hierarchy (no numbering, titles, client or format metadata), and the lower row lags in mid-reveal, which leaves an uneven doubled gutter (~y739-779 left column). Fixed: a deliberate editorial layout with bolder scale contrast between tiles, captions set as small typographic overlines (no. \u00b7 title \u00b7 format) outside or under the image instead of pills, and tiles revealed before they enter view so the gutters are always even."
+    },
+    {
+     "id": "agent",
+     "score": 6,
+     "gap": "agent-enter, desktop: the transition frame looks broken. A hard-edged purple rectangle hangs at the upper left (~x0-520, y250-360), a black diagonal slash (the ring seen edge-on, rendered black) cuts across from ~(450,575) to (990,325), and the rest is an empty field of scattered cubes. Fixed: the section's glow fades with soft edges, the ring is never shown as a dark sliver (fade it or light its edge), and the orb is already forming in frame so the entry reads as the intelligence assembling."
+    },
+    {
+     "id": "pricing",
+     "score": 6,
+     "gap": "pricing, mobile: the decorative ring slices straight through the intro copy ('Need more? Add a...' at ~x350-390, y105) and over the MOST LOVED badge and card border. On desktop the same ring is cropped by the right viewport edge and sits on top of the badge. Fixed: the ring sits behind the featured card, contained within its bounds (or as a soft halo around the badge), and never crosses text or the viewport edge."
+    },
+    {
+     "id": "start",
+     "score": 6,
+     "gap": "start/end, desktop form: the 'optional' hint under 'Website or Instagram' pushes that input ~14px below its 'Business' neighbour (tops at ~y177 vs y191 in start), so the two-column row is visibly misaligned. The near-black inputs on a near-black panel with no placeholders also make the form look empty. Fixed: put 'optional' inline with the label so paired inputs share a baseline, and give the fields a slightly lifted fill or brighter border plus short placeholder hints."
+    },
+    {
+     "id": "chrome",
+     "score": 7,
+     "gap": "hero, desktop (and mobile): the logo's pixel-cube scatter flies up under the 'Start a project' pill. A cube in the same cyan sits behind its left end (~x1200-1240, y40-110), which blurs the nav's primary CTA and makes the nav feel crowded rather than unobtrusive. Fixed: keep the scatter clear of the nav zone (below ~y90 desktop / ~y70 mobile) or bend it inward toward the ring, so the CTA stays on clean black."
+    }
+   ],
+   "sheets": [
+    "rounds/round-04/desktop-sheet.jpg",
+    "rounds/round-04/mobile-sheet.jpg"
+   ],
+   "fixes": "Stopping rule met (two rounds in a row gaining < 0.5). Bug-level gaps from this round go into the smoothing pass; the rest are listed in the final note."
   }
  ]
 }

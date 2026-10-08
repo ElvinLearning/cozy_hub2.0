@@ -168,15 +168,15 @@
         </header>
         <form class="lead" id="lead-form" novalidate data-r>
           <div class="two">
-            <label>Your name<input name="name" autocomplete="name" required></label>
-            <label>Email<input name="email" type="email" autocomplete="email" required></label>
+            <label><span>Your name</span><input name="name" autocomplete="name" placeholder="Ana Ruiz" required></label>
+            <label><span>Email</span><input name="email" type="email" autocomplete="email" placeholder="ana@yourshop.com" required></label>
           </div>
           <div class="two">
-            <label>Business<input name="business" autocomplete="organization"></label>
-            <label>Website or Instagram <small>optional</small><input name="website" inputmode="url"></label>
+            <label><span>Business</span><input name="business" autocomplete="organization" placeholder="Ana's Bakery"></label>
+            <label><span>Website or Instagram <small>optional</small></span><input name="website" inputmode="url" placeholder="@anasbakery"></label>
           </div>
           <label>Plan<select name="plan" id="lead-plan"><option value="">Not sure yet</option></select></label>
-          <label>What do you sell, and to who?<textarea name="message" rows="3"></textarea></label>
+          <label><span>What do you sell, and to who?</span><textarea name="message" rows="3" placeholder="Sourdough and pastries for the neighbourhood. Busy mornings, slow weekends."></textarea></label>
           <label class="hp" aria-hidden="true">Company site<input name="company_site" tabindex="-1" autocomplete="off"></label>
           <div class="dropzone" id="dropzone">
             <input type="file" id="lead-files" multiple accept="image/*,video/mp4,video/quicktime,video/webm,application/pdf">

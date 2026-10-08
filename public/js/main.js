@@ -247,6 +247,7 @@ function updateDOM(s, t) {
   const ai = smoothstep(T.agent.copyIn[0], T.agent.copyIn[1], s);
   const aOut = 1 - smoothstep(T.agent.pin[1] + 0.4, T.agent.pin[1] + 0.9, s);
   style(agentCopy, ai * aOut, (1 - ai) * 40);
+  agentCopy.parentElement.style.setProperty('--scrim', (ai * aOut).toFixed(3));
   style(chat, ai * aOut, (1 - ai) * 60);
   const [c0, c1] = T.agent.chat;
   const fr = [0.0, 0.18, 0.42, 0.68, 0.8];
@@ -259,7 +260,7 @@ function updateDOM(s, t) {
 
   // flow reveals
   for (const r of reveals) {
-    const k = reduced ? 1 : smoothstep(r.top - 0.95, r.top - 0.7, s);
+    const k = reduced ? 1 : smoothstep(r.top - 1.15, r.top - 0.92, s);
     style(r.el, k, (1 - k) * 36);
   }
   // reel videos: load near the viewport, play while visible
