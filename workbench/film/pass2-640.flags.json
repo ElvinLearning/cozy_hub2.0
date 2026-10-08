@@ -1,0 +1,41 @@
+{
+ "film": "workbench/film/pass2-640.mp4",
+ "frames": 2770,
+ "fps": 60.0,
+ "k": 3.0,
+ "flags": [
+  {
+   "frame": 1896,
+   "time": 31.6,
+   "motion": 2.78,
+   "local_median": 0.736,
+   "ratio": 3.6
+  },
+  {
+   "frame": 2127,
+   "time": 35.45,
+   "motion": 8.245,
+   "local_median": 2.248,
+   "ratio": 3.61
+  },
+  {
+   "frame": 2128,
+   "time": 35.467,
+   "motion": 12.008,
+   "local_median": 2.225,
+   "ratio": 5.3
+  },
+  {
+   "frame": 2604,
+   "time": 43.4,
+   "motion": 9.123,
+   "local_median": 2.347,
+   "ratio": 3.83
+  }
+ ],
+ "stats": {
+  "mean": 0.6181666094446235,
+  "p95": 1.8853021442890165,
+  "max": 12.008184432983398
+ }
+}

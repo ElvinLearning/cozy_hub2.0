@@ -125,6 +125,69 @@
     "rounds/round-02/mobile-sheet.jpg"
    ],
    "fixes": "Fixed: hero chrome is now a high-F0 mirror lit by broad brand softboxes (continuous violet/indigo/cyan sweeps, fuller tube, clearer loop); iris lands on the hero print rising in the aperture, outgoing scene sinks; side prints are casual phone snaps; pixels are flat brand squares in flight (photo colour only on the print, film colour on lock-in), no white mass; phones: film covers the screen at the end of the push-in; reel grid dense on phones; reel fades at its foot and the mosaic grows out of the orb; agent fully clears before pricing; phones get clear space for the closing loop; nav near-opaque; pinned DOM rounding jitter fixed (from flow scan)."
+  },
+  {
+   "id": "round-03",
+   "critic": "fresh agent",
+   "date": "2026-10-08",
+   "summary": "The resting hero (chrome loop inside the neon logo ring with the pixel spray) and the dissolve-mid pixel stream through the ring are the strongest frames and hold the brand palette well. The page falls short of SOTD level because the 3D and rings run into headlines (hero-scrolled on mobile is the worst case, then dissolve-late), and because several frames look cheap: the iris is a soft, empty blur, agent-enter is a flat checkerboard, the prints glow like screens, and the full-bleed film is visibly low-res. Display type is tracked so tight that 'turn' reads as 'tum'.",
+   "scores": [
+    {
+     "id": "hero",
+     "score": 6,
+     "gap": "hero-scrolled collides with the 3D. On mobile (390x844) the ring's lower arc and the chrome loop draw straight over the eyebrow 'COZY DIGITAL \u00b7 AI VIDEO STUDIO' and the 'Your business,' headline (y\u2248320-410), so the text sits under the glowing tube. On desktop the 's,' of 'business,' touches the ring's left stroke (x\u2248640-670, y\u2248340-400). Fixed: as the page scrolls, the ring and loop move up and away from the copy, or the copy scrolls out first, so there is always at least 24px of clear dark space between any tube or glow and the type."
+    },
+    {
+     "id": "iris",
+     "score": 5,
+     "gap": "iris (both viewports) does not land anywhere. The aperture is an empty navy disc ringed by a soft, out-of-focus bloom, with one small tilted print floating in it. On desktop part of the loop also clips the near plane and shows as a flat white triangle at the top (x\u2248380-440, y\u224890-150). Fixed: the studio composition (print stack and 'You send' copy) is already visible at depth inside the ring's opening and grows as the camera passes through, the ring tube stays crisp with motion streaks as it sweeps past the lens, and no geometry clips at the near plane."
+    },
+    {
+     "id": "assets",
+     "score": 6,
+     "gap": "assets on desktop: every print has a white bloom halo around its border, so the four prints read as glowing light panels rather than paper. The 'your logo' card also looks like a placeholder. Fixed: no bloom on the print borders; matte off-white paper with a slight texture and warmth, soft directional contact shadows where prints overlap and meet the ground, and a hint of curl or specular sheen, so they feel like real photos dropped on a desk."
+    },
+    {
+     "id": "dissolve",
+     "score": 7,
+     "gap": "dissolve-late on desktop: the ring has drifted left and grown, and its upper arc cuts straight through the headline 'We turn it into' (x\u2248200-420, y\u2248180-230), with the glow sitting on the letters. This is the same headline fight as dissolve-start, where 'We' sits on the dimmed 'your logo' card. Fixed: the ring and the departing prints stay below the headline's baseline (or the headline lifts or fades before they arrive), so the headline is clean for the whole beat. Also remove the stray white tick-marked scanline at the mosaic's left edge (x\u2248530, y\u2248390-530)."
+    },
+    {
+     "id": "handoff",
+     "score": 6,
+     "gap": "film-full on desktop: once the clip goes full-bleed at 1440 wide it is visibly upscaled. The face is soft, and the bar background shows macroblocking and banding, which makes the moment the film becomes the page look cheap. Fixed: a high-bitrate source at 1080p or above for the full-bleed state (or cap the scale and add fine grain and a vignette to mask it), so the frame holds up edge to edge."
+    },
+    {
+     "id": "reel",
+     "score": 6,
+     "gap": "reel: the 'Vertical split, 9:16' tile (desktop centre column at x\u2248507-933, y\u2248500-900; mobile fourth row) butts two unrelated clips together, karate above and a boxer below, with a hard horizontal seam and no gutter. It reads as a rendering glitch in an otherwise tidy grid. Fixed: one true 9:16 portrait clip in a tall tile, or a deliberate split with a visible gutter and a label on each half."
+    },
+    {
+     "id": "agent",
+     "score": 6,
+     "gap": "agent-enter (both viewports) is a flat, full-viewport checkerboard of dark 40px squares with a few lit tiles and a hard-edged purple band under the reel. It looks like a placeholder or debug grid, not the arrival of a premium product, and no orb is visible yet. Fixed: the tiles stay sparse and dimensional and converge into the forming orb (and its swarm) as the section enters, so the transition reveals the agent rather than blanking the screen."
+    },
+    {
+     "id": "pricing",
+     "score": 7,
+     "gap": "pricing (both viewports) is a stock three-card SaaS layout. The featured 'Cozy Agent' plan is set apart only by a 1px gradient border and a small 'MOST LOVED' pill, and the cards share the same flat surface as the rest of the page. Fixed: the featured card carries the agent section's visual language (a faint orb or ring glow behind it, a raised or lighter surface, slightly larger scale), so it is the obvious choice at a glance and looks designed for this page, not taken from a template."
+    },
+    {
+     "id": "start",
+     "score": 6,
+     "gap": "start/end: the closing loop does not sit in the ring. On desktop the infinity loop is wider than the ring and spills out on the left (x\u2248140-220), hiding the ring's left arc. On mobile 'end' the ring shows only as broken arcs with the loop off-centre. The cube spray also drifts over the body copy ('a few photos', desktop start, y\u2248240-250). Fixed: a closing image that mirrors the hero, with the full ring drawn, the loop contained inside it, and the pixel scatter at top right, centred in the left column (desktop) or the page (mobile), with no particles over the text."
+    },
+    {
+     "id": "chrome",
+     "score": 7,
+     "gap": "Type system: the grotesk display headlines are tracked so tight that letters fuse. In 'We turn it into film.' (dissolve and film states, both viewports) the 'rn' of 'turn' merges into an 'm' and reads 'tum', and 'We' and 'business' have touching glyphs. Fixed: loosen display tracking to roughly -0.02 to -0.03em (or kern the problem pairs) so every word reads correctly at all sizes, while keeping the tight, confident look."
+    }
+   ],
+   "sheets": [
+    "rounds/round-03/desktop-sheet.jpg",
+    "rounds/round-03/mobile-sheet.jpg"
+   ],
+   "fixes": "Rebuilt agent-enter (stuck 2 rounds): the swarm now converges out of the whole view into orbit while the orb grows, no 2D mosaic. Hero copy clears before the ring moves; iris opens earlier with a crisp rim and lands close on a print already arriving; prints are matte paper with contact shadows; logo card is a sample business; dissolve headline leaves before the ring rises; film push-in capped with grain/vignette; reel tall tile is a single shot; featured plan raised with the agent ring; closing image mirrors the hero; display tracking loosened."
   }
  ]
 }
