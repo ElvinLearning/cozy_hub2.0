@@ -233,15 +233,16 @@ function updateDOM(s, t) {
 
   // dissolve: title, then three beats that stay lit once reached
   const dEnd = T.dissolve.pin[1];
-  const dt = smoothstep(T.dissolve.pin[0] - 0.35, T.dissolve.pin[0] - 0.05, s) * (1 - smoothstep(T.dissolve.titleOut[0], T.dissolve.titleOut[1], s));
-  style(beatTitle, dt, (1 - smoothstep(T.dissolve.pin[0] - 0.35, T.dissolve.pin[0] - 0.05, s)) * 30);
+  // fades in as it settles into its pin, not while it is still rising over the print (desktop) / the ring (phones)
+  const dt = smoothstep(T.dissolve.pin[0] - 0.14, T.dissolve.pin[0] + 0.04, s) * (1 - smoothstep(T.dissolve.titleOut[0], T.dissolve.titleOut[1], s));
+  style(beatTitle, dt, (1 - smoothstep(T.dissolve.pin[0] - 0.14, T.dissolve.pin[0] + 0.04, s)) * 30);
   beats.forEach((b, i) => {
     const on = smoothstep(T.dissolve.beats[i], T.dissolve.beats[i] + 0.2, s);
     const next = i < 2 ? smoothstep(T.dissolve.beats[i + 1], T.dissolve.beats[i + 1] + 0.2, s) : 0;
     style(b, on * (1 - 0.45 * next) * (1 - smoothstep(dEnd - 0.7, dEnd - 0.4, s)), (1 - on) * 24);
   });
-  // film caption
-  style(filmCap, band(s, dEnd - 0.3, dEnd - 0.05, T.film.pushIn[0] + 0.3, T.film.pushIn[0] + 0.55));
+  // film caption: after the beats have gone, and gone itself before the pin releases it into the growing film
+  style(filmCap, band(s, dEnd - 0.4, dEnd - 0.2, dEnd - 0.08, dEnd + 0.12));
 
   // agent
   const ai = smoothstep(T.agent.copyIn[0], T.agent.copyIn[1], s);

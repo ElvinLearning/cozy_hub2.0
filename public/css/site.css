@@ -67,7 +67,7 @@ h2.display { font-size: clamp(2.5rem, 5.6vw, 5.6rem); }
 
 /* assets */
 .side-copy { position: absolute; right: clamp(20px, 6vw, 110px); top: 50%; translate: 0 -50%; max-width: 520px; }
-.side-copy p { color: #c3c9c4; font-size: 1.1rem; margin: 26px 0 0; max-width: 30em; }
+.side-copy p:not(.eyebrow) { color: #c3c9c4; font-size: 1.1rem; margin: 26px 0 0; max-width: 30em; }
 
 /* dissolve */
 .dissolve-copy { position: absolute; inset: clamp(96px, 14vh, 140px) clamp(20px, 5vw, 80px) clamp(28px, 5vh, 56px); display: flex; flex-direction: column; justify-content: space-between; pointer-events: none; }
@@ -206,7 +206,7 @@ h2.display { font-size: clamp(2.5rem, 5.6vw, 5.6rem); }
   .agent-grid::before { background: linear-gradient(180deg, #08090b00 34%, #08090bd9 52%, #08090bf2 100%); }
   .agent-grid .side-copy { grid-column: 1; grid-row: 1; }
   .agent-grid .side-copy .eyebrow { margin-bottom: 12px; }
-  .agent-grid .side-copy p, .agent-grid .ticks, .agent-grid .side-copy .btn { display: none; }
+  .agent-grid .side-copy p:not(.eyebrow), .agent-grid .ticks, .agent-grid .side-copy .btn { display: none; }
   .agent-grid h2.display { font-size: 2.3rem; }
   .chat { grid-column: 1; grid-row: 2; justify-self: stretch; width: auto; padding: 12px; gap: 8px; }
   .chat .bubble { font-size: 13px; padding: 8px 12px; }

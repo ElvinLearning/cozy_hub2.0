@@ -67,10 +67,11 @@ export const T = {
     // phones: follow the stream along x, keep the subject in the band the copy leaves free
     portrait: { ndcY: { assets: 0.38, dissolve: 0.13, film: 0.04 }, printHalfWidth: 1.9, screenPad: 1.04 },
     pushIn: [5.2, 6.15],
-    handoff: [5.95, 6.45], // webgl screen hands over to the DOM reel
   },
   // flow + stage sections after the film, relative to section tops
-  reel: { dim: [['reel', 0.05], ['reel', 0.6]] },
+  // the film recedes as the reel's header rises over it (it used to stay at full
+  // brightness behind the eyebrow until the reel reached the top of the screen)
+  reel: { dim: [['reel', -0.45], ['reel', 0.2]] },
   agent: {
     enter: [['agent', -0.75], ['agent', -0.05]], // pixel mosaic into chapter 3
     pin: [['agent', 0], ['agent', 1.3], 0.2],
@@ -83,13 +84,16 @@ export const T = {
       { t: ['agent', 1.4], v: [-0.8, 0.05, 6.9, 0.0, -0.05, 0.0] },
       { t: ['agent', 2.4], v: [-0.95, -0.5, 6.6, 0.0, -0.2, 0.0] },
     ],
-    exit: [['pricing', -0.75], ['pricing', 0.0]], // agent scene clears before the price cards arrive
+    // agent scene winds down as the chat ends and is gone before the pricing header reaches the orb
+    // (desktop) / before the departing agent header has fully crossed it (phones)
+    exit: [['pricing', -1.1], ['pricing', -0.55]],
     portrait: { ndcY: 0.55, swarmPad: 0.3 },
   },
   start: {
-    enter: [['start', -0.9], ['start', -0.1]], // the loop comes back to close the page
+    // the loop comes back to close the page, once the start header has (nearly) cleared its spot
+    enter: [['start', -0.25], ['start', 0.15]],
     // the closing loop gets its own space: lower left under the copy on desktop,
-    // top of the screen (dimmed) on phones. ndc = where the ring centre sits.
+    // lower part of the screen (dimmed, above the footer) on phones. ndc = where the ring centre sits.
     frame: { ndc: [-0.52, -0.3], dist: [16, 14.5], portraitNdcY: -0.36, dolly: [['start', -0.9], ['start', 0.9]] },
     exposure: { desktop: 0.7, portrait: 0.38 },
   },

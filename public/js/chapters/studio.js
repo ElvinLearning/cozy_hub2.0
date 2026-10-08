@@ -387,8 +387,8 @@ export class StudioChapter {
       m.userData.shadow.material.uniforms.uFade.value = m.material.uniforms.uFade.value * (i === 0 ? 1 - smoothstep(0.2, 0.6, pTrue) : 1);
     });
 
-    // the ring wakes up as the dissolve starts
-    const ringIn = smoothstep(T.dissolve.progress[0] - 0.4, T.dissolve.progress[0] + 0.15, s);
+    // the ring wakes up as the dissolve starts (after the assets copy it would draw through has faded)
+    const ringIn = smoothstep(T.dissolve.progress[0] - 0.1, T.dissolve.progress[0] + 0.15, s);
     const ringOut = 1 - smoothstep(T.film.videoIn[0], T.film.pushIn[0] + 0.2, s);
     this.ringMat.uniforms.uFade.value = ringIn * ringOut;
     this.ringMat.uniforms.uGlow.value = 3.2 + 2.5 * Math.sin(Math.PI * pTrue);
