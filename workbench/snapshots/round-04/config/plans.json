@@ -1,0 +1,47 @@
+{
+  "_note": "DRAFT pricing. Every number on the landing page and every credit charge in the admin panel reads from this file, so pricing changes happen here and nowhere else. 1 credit = 1 finished video up to ~5-10 s (see config/models.json for per-model credit costs).",
+  "currency": "USD",
+  "plans": [
+    {
+      "id": "starter",
+      "name": "Starter",
+      "price": 40,
+      "interval": "month",
+      "credits": 5,
+      "blurb": "For the business that needs a steady drip of scroll-stopping clips.",
+      "features": ["5 AI videos every month", "Vertical + widescreen cuts", "Your logo, products and colors", "48-hour turnaround"],
+      "cta": "Start with Starter"
+    },
+    {
+      "id": "growth",
+      "name": "Growth",
+      "price": 120,
+      "interval": "month",
+      "credits": 20,
+      "featured": false,
+      "blurb": "Enough volume to test ads every week and keep the winners running.",
+      "features": ["20 AI videos every month", "Ad variations for A/B tests", "Premium cinematic models", "Priority queue"],
+      "cta": "Choose Growth"
+    },
+    {
+      "id": "agent",
+      "name": "Cozy Agent",
+      "price": 300,
+      "interval": "month",
+      "credits": 40,
+      "featured": true,
+      "blurb": "Your own creative agent that knows your brand, writes the ideas and ships the cuts.",
+      "features": ["40 AI videos every month", "Cozy Agent trained on your brand", "Scripts, hooks and shot lists written for you", "Unlimited revisions in the agent chat", "Same-day turnaround"],
+      "cta": "Get the Cozy Agent"
+    }
+  ],
+  "packs": [
+    { "id": "pack10", "name": "10 extra videos", "price": 90, "credits": 10 },
+    { "id": "pack30", "name": "30 extra videos", "price": 240, "credits": 30 }
+  ],
+  "agent": {
+    "creditsPerTurn": 0,
+    "creditsPerAsset": 1,
+    "_note": "Cozy Agent turns are free to chat; each finished video the agent returns costs creditsPerAsset."
+  }
+}

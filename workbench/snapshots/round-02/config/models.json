@@ -1,0 +1,41 @@
+{
+  "_note": "Higgsfield model ids and the arguments the admin form starts from. Ids marked verified:false came from public docs/catalogs, not a live call: open the model page on cloud.higgsfield.ai, copy its exact id and request body, then set verified:true. Any id can also be typed straight into the admin panel's raw mode.",
+  "models": [
+    {
+      "id": "bytedance/seedream/v4/text-to-image",
+      "label": "Seedream 4 - image (storyboards, product stills)",
+      "kind": "image",
+      "credits": 0,
+      "verified": true,
+      "source": "higgsfield-client 0.2.0 README",
+      "defaults": { "prompt": "", "resolution": "2K", "aspect_ratio": "16:9", "camera_fixed": false }
+    },
+    {
+      "id": "higgsfield-ai/dop/standard",
+      "label": "Higgsfield DoP - image to video (camera moves)",
+      "kind": "video",
+      "credits": 1,
+      "verified": false,
+      "source": "public catalogs list dop/lite, dop/turbo, dop/standard tiers",
+      "defaults": { "prompt": "", "image_url": "", "duration": 5 }
+    },
+    {
+      "id": "higgsfield-ai/dop/lite",
+      "label": "Higgsfield DoP Lite - fast drafts",
+      "kind": "video",
+      "credits": 1,
+      "verified": false,
+      "source": "public catalogs",
+      "defaults": { "prompt": "", "image_url": "", "duration": 5 }
+    },
+    {
+      "id": "kling-video/v2.1/pro/image-to-video",
+      "label": "Kling 2.1 Pro - image to video (cinematic)",
+      "kind": "video",
+      "credits": 2,
+      "verified": false,
+      "source": "Kling via Higgsfield; check exact path on cloud.higgsfield.ai",
+      "defaults": { "prompt": "", "image_url": "", "duration": 5, "aspect_ratio": "16:9" }
+    }
+  ]
+}
