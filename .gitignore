@@ -9,3 +9,4 @@ node_modules
 workbench/shots/
 workbench/film/*.mp4
 workbench/film/*-frames/
+!workbench/film/cozy-1080p60-web.mp4

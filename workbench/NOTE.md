@@ -54,7 +54,9 @@ Each round's critic was new and named different gaps, so the plateau is partly c
   - Pass 1 found pinned text jittering ±1 px. Fixed.
   - Pass 2 found a layout jump in the agent chat. Fixed.
   - The remaining flags were explained by phase correlation (scroll at rest; whole-pixel cadence at 1x).
-- **Final film:** `film/cozy-1080p60.mp4`, 1920x1080, 60 fps, x264 crf 13, yuv420p, faststart. Its scan is in `film/cozy-1080p60.flags.json`.
+- **Final film:** `film/cozy-1080p60.mp4`. 1920x1080, 60 fps, 1886 frames, 31.4 s, x264 crf 13, yuv420p, faststart, 29 MB. The master stays on disk, out of git. A sharing copy, `film/cozy-1080p60-web.mp4` (crf 24, 7 MB), and a contact sheet, `film/cozy-1080p60-sheet.jpg`, are committed.
+- **Final scan:** 1 flag (f616), an estimator artefact. Phase correlation shows smooth motion through it. Details are in `film/QA.md`.
+- **Recorder:** resumable, because the first final render was lost to a container restart.
 - **Frame rate on real hardware was NOT measured.** The build environment has no GPU; WebGL ran on SwiftShader (CPU) at about 0.2-1.3 s per frame. The page has adaptive resolution, quality tiers and lazy chapter builds, but 60 fps on a given laptop or phone still has to be checked on that device.
 
 ## Spend

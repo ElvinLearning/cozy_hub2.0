@@ -27,3 +27,19 @@ is > 3x or < 1/3x (ignoring stretches below 0.25 px/frame).
   lines. Intended trade-off (crisp text). At 1080p the cadence is 13/14 px.
 - f2604 (end): phase correlation shows zero shift. Scroll is at rest while the
   3D loop animates. Intended.
+
+## Final film: 1920x1080, 60 fps, current code (after the smoothing pass)
+`cozy-1080p60.mp4`: 1886 frames, 31.4 s, x264 crf 13, yuv420p, faststart, 29 MB.
+`cozy-1080p60-web.mp4` is the same film at crf 24 for sharing. The crf-13 master
+is kept out of git.
+
+Rendered with the resumable recorder. The first attempt was lost to a
+container restart at frame 1080/1886. The recorder now writes frames to disk and
+fast-forwards on re-run (a test render killed mid-way and resumed scanned clean,
+with identical motion statistics).
+
+Scan at 480 px: motion mean 0.46, p95 1.80, max 2.60 px/frame. **1 flag**:
+- f616 (s = 1.87, prints settling, ratio 3.01, just over the 3x threshold): an
+  estimator artefact. Phase correlation shows smooth, steadily accelerating global
+  motion through it (-1.72, -1.73, -1.80, -1.84, -1.86 px), the changed-pixel
+  count rises evenly, and frames 615/616 look continuous.
