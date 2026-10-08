@@ -62,6 +62,69 @@
     "rounds/round-01/mobile-sheet.jpg"
    ],
    "fixes": "Fixed: soft pins now settle where a hard pin would (centred ramps) - headline clears the nav; phone camera paths for hero/studio/agent/closing loop (ring above copy, stream followed along x, film fitted to width); nav scrim; agent copy scrim; reel grid rebuilt on 12 columns with no holes; featured plan leads on phones; closing loop moved to its own space; end-state crash fixed (stale camera keys)."
+  },
+  {
+   "id": "round-02",
+   "critic": "fresh agent",
+   "date": "2026-10-07",
+   "summary": "Round-02 is a coherent, on-brand dark page. On desktop the story mostly reads (logo-ring hero, pixel stream through the ring, same shot landing as film), and the type system, pricing and form are professional. It still falls short of the award bar in four places: the 3D material (a thin, mostly black hero ribbon vs the reference's rich chrome tube), the film-to-page handoff (the film never fills the phone screen), several transitional frames that look unfinished (the agent-enter seam, the ghost orb behind pricing, the loop hidden on the mobile end screen), and a broken mobile reel row.",
+   "scores": [
+    {
+     "id": "hero",
+     "score": 6,
+     "gap": "hero, desktop 1440 (right half, inside the ring) and mobile (top half): the loop is a thin twisted ribbon whose body is almost flat black. Only thin cyan rim lines and two blown-out cyan specular blobs light it, so it reads as a horn or 'V' shape rather than a loop and is clearly weaker than the reference's thick chrome tube. Fixed would be a fuller tube-section loop with an unmistakable loop silhouette inside the ring, with continuous violet->indigo->cyan environment reflections sweeping across the body (not only at the edges) and no clipped highlights."
+    },
+    {
+     "id": "iris",
+     "score": 6,
+     "gap": "iris, desktop: the landing print enters from the bottom edge (about x 480-770, y 605-900), tilted and half cut off by the viewport, while the ring's aperture above it is empty navy. Soft violet and blue blur slabs at the left edge and a stray pink cube at the right edge add noise, so there is no clear sense of arriving anywhere. Fixed would have the print centred in the ring's aperture and fully visible, growing toward the camera while the ring rim streams past at the frame edges, with no stray blobs (mobile already gets close to this)."
+    },
+    {
+     "id": "assets",
+     "score": 7,
+     "gap": "assets, both viewports: the prints are cinematic film stills of actors (a bar portrait, a night car park, a boardroom) that look exactly like the finished reel clips. They don't read as the customer's own 'phone photos of your shop / products on the counter' that the copy promises, so the before/after is lost. Fixed would make the side prints visibly casual customer snaps (shopfront, product on a counter, phone aspect, slightly imperfect light), keeping only the hero print as the shot that becomes the film."
+    },
+    {
+     "id": "dissolve",
+     "score": 7,
+     "gap": "dissolve-mid, desktop (centre) and mobile: inside the ring the stream blows out into a clipped white mass. Past the ring it turns into brown and beige tumbling 3D blocks, which read as voxel debris rather than the logo's pixel scatter (flat, glowing cyan/indigo/violet squares with a few bright accents, as in crop-logo-pixels.png). Fixed would keep the particles as flat emissive squares in brand hues, with individual pixels readable as they pass through the ring, and have them pick up the photo's colours only as they lock into the film grid on the right."
+    },
+    {
+     "id": "handoff",
+     "score": 5,
+     "gap": "film-full, mobile: the film never fills the frame. It stays a 16:9 strip (y about 305-515) with about 300px of empty navy above it and the next heading below, and a stair-step of unfilled dark tiles is left on its right edge (x about 355-380). Fixed would have the film cover-crop to the full 390x844 viewport, centred on the subject with every tile resolved, before the 'Work that stops the scroll' heading arrives."
+    },
+    {
+     "id": "reel",
+     "score": 6,
+     "gap": "reel, mobile: the grid has a hole. 'Late-night desk' is a half-width tile with an empty half-width cell to its right (x about 200-375, y about 268-365), so the layout looks broken rather than editorial. Fixed would pair it with another half tile or make it full-width, so every row closes with consistent gutters."
+    },
+    {
+     "id": "agent",
+     "score": 6,
+     "gap": "agent-enter, both viewports: the pixel-grid canvas starts with a hard horizontal edge (desktop y about 360, mobile y about 338) that slices the top row of tiles in half. A dead empty band sits between the last reel row and the grid, and the grid is mostly unlit dark squares with a few lit ones, so the frame reads as a loading placeholder rather than the arrival of an intelligence. Fixed would have the tiles feather in with no seam and converge visibly into the orb, so the orb forming is the subject of the frame."
+    },
+    {
+     "id": "pricing",
+     "score": 7,
+     "gap": "pricing, both viewports: the agent orb is still faintly rendered behind the section. On desktop its arc shows above the Growth card, specks sit in the gutters between cards and a violet smudge sits inside the Growth card. On mobile its ring and a diagonal streak cross the intro line 'Need more? Add a pack anytime.' Fixed would have the 3D fully cleared or parked off-screen before pricing, so the cards and copy sit on clean near-black #08090b."
+    },
+    {
+     "id": "start",
+     "score": 6,
+     "gap": "end, mobile: the closing loop is almost entirely hidden behind the form card. Only a cropped arc of ring and ribbon peeks out between the card's bottom edge and the footer (y about 640-750), so the story doesn't close on phones. Fixed would give the full ring and loop their own clear space, either between the intro copy and the form or below the form above the footer, the way desktop shows it beside the form."
+    },
+    {
+     "id": "chrome",
+     "score": 7,
+     "gap": "pricing, start and end, desktop (top-left): once scrolled, the frosted nav bar blurs the oversized section headings sliding under it into a grey smear right behind the 'cozy digital' logo, and the bar's hard bottom edge slices the italic heading lines (e.g. 'one simple plan.'). The logo ends up sitting on a dirty patch. Fixed would be a near-opaque #08090b nav, or headings that fade before they reach it, so the logo always sits on clean black."
+    }
+   ],
+   "sheets": [
+    "rounds/round-02/desktop-sheet.jpg",
+    "rounds/round-02/mobile-sheet.jpg"
+   ],
+   "fixes": "Fixed: hero chrome is now a high-F0 mirror lit by broad brand softboxes (continuous violet/indigo/cyan sweeps, fuller tube, clearer loop); iris lands on the hero print rising in the aperture, outgoing scene sinks; side prints are casual phone snaps; pixels are flat brand squares in flight (photo colour only on the print, film colour on lock-in), no white mass; phones: film covers the screen at the end of the push-in; reel grid dense on phones; reel fades at its foot and the mosaic grows out of the orb; agent fully clears before pricing; phones get clear space for the closing loop; nav near-opaque; pinned DOM rounding jitter fixed (from flow scan)."
   }
  ]
 }

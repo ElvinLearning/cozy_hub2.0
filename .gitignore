@@ -7,3 +7,4 @@ workbench/**/*.png.tmp
 *.log
 node_modules
 workbench/shots/
+workbench/film/*.mp4

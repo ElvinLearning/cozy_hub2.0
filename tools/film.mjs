@@ -55,8 +55,10 @@ function speed(s) {
     const k = smooth(a - RAMP, a, s) * (1 - smooth(b, b + RAMP, s));
     v = Math.min(v, CRUISE + (slow - CRUISE) * k);
   }
-  // ease out of rest at the start and into rest at the very end
-  return v * Math.max(0.2, smooth(0, 0.35, s)) * Math.max(0.2, 1 - smooth(maxS - 0.4, maxS, s));
+  // ease out of rest at the start and into rest at the very end (square-root profile
+  // = constant deceleration, so the stop has no kink; floor keeps it moving to the end)
+  const tail = Math.min(1, Math.sqrt(Math.max(0, maxS - s) / 0.6));
+  return v * Math.max(0.2, smooth(0, 0.35, s)) * Math.max(0.03, tail);
 }
 const from = +arg('from', 0), to = Math.min(+arg('to', maxS), maxS);
 const schedule = [];

@@ -1,0 +1,76 @@
+{
+ "film": "workbench/film/pass1-640.mp4",
+ "frames": 2780,
+ "fps": 60.0,
+ "k": 3.0,
+ "flags": [
+  {
+   "frame": 365,
+   "time": 6.083,
+   "motion": 0.254,
+   "local_median": 0.038,
+   "ratio": 3.44
+  },
+  {
+   "frame": 375,
+   "time": 6.25,
+   "motion": 0.262,
+   "local_median": 0.04,
+   "ratio": 3.48
+  },
+  {
+   "frame": 385,
+   "time": 6.417,
+   "motion": 0.269,
+   "local_median": 0.042,
+   "ratio": 3.49
+  },
+  {
+   "frame": 395,
+   "time": 6.583,
+   "motion": 0.267,
+   "local_median": 0.041,
+   "ratio": 3.5
+  },
+  {
+   "frame": 2651,
+   "time": 44.183,
+   "motion": 0.024,
+   "local_median": 0.415,
+   "ratio": 0.16
+  },
+  {
+   "frame": 2661,
+   "time": 44.35,
+   "motion": 0.004,
+   "local_median": 0.36,
+   "ratio": 0.13
+  },
+  {
+   "frame": 2671,
+   "time": 44.517,
+   "motion": 0.022,
+   "local_median": 0.342,
+   "ratio": 0.18
+  },
+  {
+   "frame": 2681,
+   "time": 44.683,
+   "motion": 0.006,
+   "local_median": 0.369,
+   "ratio": 0.13
+  },
+  {
+   "frame": 2688,
+   "time": 44.8,
+   "motion": 0.304,
+   "local_median": 0.007,
+   "ratio": 6.2
+  }
+ ],
+ "stats": {
+  "mean": 0.6058520997402915,
+  "p95": 1.7621154606342304,
+  "max": 4.760289669036865
+ }
+}
