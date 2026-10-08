@@ -306,6 +306,7 @@ function frame(now) {
   last = now;
   tick(dt);
 }
+let drawing = true; // the recorder can advance state without drawing (resume fast-forward)
 function tick(dt) {
   frameDt = dt;
   if (!reduced) time += dt;
@@ -326,7 +327,7 @@ function tick(dt) {
   if (tex) renderer.initTexture(tex);
 
   try {
-    composite(s, time, ptr);
+    composite(s, time, ptr, drawing);
   } catch (e) {
     // fenced: keep running, but make the failure visible to tools and ?debug
     if (!app.errors.includes(`frame: ${e.message}`)) app.errors.push(`frame: ${e.message}`);
@@ -346,7 +347,7 @@ function tick(dt) {
   }
 }
 
-function composite(s, t, ptr) {
+function composite(s, t, ptr, draw = true) {
   const C = app.chapters;
   const iris = invLerp(T.iris[0], T.iris[1], s);
   const studioDim = 1 - smoothstep(T.reel.dim[0], T.reel.dim[1], s);
@@ -373,19 +374,19 @@ function composite(s, t, ptr) {
   const need = new Set([job.a, job.b].filter(Boolean));
   if (need.has('loop')) {
     C.loop.update(s, t, T, 'hero', ptr);
-    C.loop.render(targets.loop);
+    if (draw) C.loop.render(targets.loop);
   }
   if (need.has('loopEnd')) {
     C.loop.update(s, t, T, 'end', ptr);
-    C.loop.render(targets.loop);
+    if (draw) C.loop.render(targets.loop);
   }
   if (need.has('studio')) {
     C.studio.update(s, t, T, ptr);
-    C.studio.render(targets.studio);
+    if (draw) C.studio.render(targets.studio);
   }
   if (need.has('agent')) {
     C.agent.update(s, t, T, ptr);
-    C.agent.render(targets.agent);
+    if (draw) C.agent.render(targets.agent);
   }
   // the studio film holds its first frame (= the print) until the pixels land,
   // then plays from the top; scrolling back above the landing rewinds it
@@ -403,7 +404,7 @@ function composite(s, t, ptr) {
   }
   const tgt = (n) => (n === 'loopEnd' ? targets.loop : n ? targets[n] : null);
   const center = job.mode === 1 && job.a === 'loop' ? C.loop.ringScreen() : job.mode === 2 && C.agent ? C.agent.orbScreen() : [0.5, 0.5];
-  pipe.render({ a: tgt(job.a), b: tgt(job.b), mix: job.mix, mode: job.mode, expA: job.expA ?? 1, expB: job.expB ?? 1, center, exposure: 1.0, bloom: 0.7, bgColor: bg });
+  if (draw) pipe.render({ a: tgt(job.a), b: tgt(job.b), mix: job.mix, mode: job.mode, expA: job.expA ?? 1, expB: job.expB ?? 1, center, exposure: 1.0, bloom: 0.7, bgColor: bg });
   app.job = job;
 }
 
@@ -449,8 +450,10 @@ app.restartIntro = () => (introStart = time);
 app.skipIntro = () => (introSkipped = true);
 /** Recorder: take over the clock. Each step() is exactly one frame of dt seconds. */
 app.manual = (on = true) => (manual = on);
-app.step = (dt = 1 / 60) => {
+app.step = (dt = 1 / 60, { render = true } = {}) => {
+  drawing = render;
   tick(dt);
+  drawing = true;
   // CSS / WAAPI animations follow the same virtual clock
   for (const a of document.getAnimations()) {
     a.pause();

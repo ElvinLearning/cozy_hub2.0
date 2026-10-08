@@ -8,3 +8,4 @@ workbench/**/*.png.tmp
 node_modules
 workbench/shots/
 workbench/film/*.mp4
+workbench/film/*-frames/

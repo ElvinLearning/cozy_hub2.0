@@ -10,10 +10,11 @@
 //   where it moves (no synthetic scroll-event spam).
 // - The schedule: hold on the intro, cruise at ~0.75 vh/s, slow to ~0.4 vh/s
 //   through the signature moments, with speed ramps >= 0.5 vh long.
-// - PNG frames are piped straight into x264 (crf 13, yuv420p, faststart).
+// - PNG frames are written to disk (resumable) and encoded with x264 (crf 13,
+//   yuv420p, faststart) at the end.
 import { chromium } from 'playwright';
-import { spawn } from 'node:child_process';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
+import { appendFileSync, existsSync, mkdirSync, readFileSync, renameSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { dirname } from 'node:path';
 
 const arg = (k, d) => {
@@ -72,18 +73,36 @@ for (let i = 0; i < FPS * 1.5; i++) schedule.push(to);
 const frames = schedule.length;
 console.log(`film: ${W}x${H}@${DPR}x, ${frames} frames (${(frames / FPS).toFixed(1)} s), scroll ${from.toFixed(2)} -> ${to.toFixed(2)} vh`);
 
-const ff = spawn('ffmpeg', ['-loglevel', 'error', '-y', '-f', 'image2pipe', '-framerate', String(FPS), '-c:v', 'png', '-i', '-', '-c:v', 'libx264', '-preset', 'slow', '-crf', crf, '-pix_fmt', 'yuv420p', '-movflags', '+faststart', out], { stdio: ['pipe', 'inherit', 'inherit'] });
-const ffDone = new Promise((r) => ff.on('close', r));
+// Frames go to disk as numbered PNGs and are encoded at the end, so a long
+// render survives a crash or container restart: re-run the same command and
+// it fast-forwards the page through the frames already on disk (state only,
+// no drawing) and carries on from there.
+const framesDir = arg('frames', out.replace(/\.mp4$/, '-frames'));
+mkdirSync(framesDir, { recursive: true });
+const frameFile = (f) => `${framesDir}/f${String(f).padStart(5, '0')}.png`;
+let done = 0;
+while (done < frames && existsSync(frameFile(done)) && statSync(frameFile(done)).size > 1000) done++;
+const logFile = `${framesDir}/frames.jsonl`;
+const prior = existsSync(logFile) ? readFileSync(logFile, 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l)).filter((r) => r.f < done) : [];
+writeFileSync(logFile, prior.map((r) => JSON.stringify(r)).join('\n') + (prior.length ? '\n' : ''));
 
 // Playwright 1.56's paused clock never fires requestAnimationFrame, so the
 // page hands its frame loop to us: one __app.step(1/60) per video frame.
 await page.evaluate(() => (window.__app.manual(true), window.__app.restartIntro()));
+let lastS = -1;
+if (done) {
+  console.log(`  resuming: fast-forwarding ${done} frames already on disk`);
+  for (let f = 0; f < done; f++) {
+    const sv = schedule[f];
+    if (sv !== lastS) await page.evaluate((y) => window.__app.setScroll(y), sv * vh), (lastS = sv);
+    await page.clock.runFor(FRAME_MS);
+    await page.evaluate((dt) => window.__app.step(dt, { render: false }), 1 / FPS);
+  }
+}
 // the first capture at a new size warms up the software compositor (~100 s at 1080p); do it off the clock
 await page.screenshot({ type: 'png', timeout: 600000 });
-let lastS = -1;
 const t0 = Date.now();
-const log = [];
-for (let f = 0; f < frames; f++) {
+for (let f = done; f < frames; f++) {
   const sv = schedule[f];
   if (sv !== lastS) {
     await page.evaluate((y) => window.__app.setScroll(y), sv * vh);
@@ -96,15 +115,20 @@ for (let f = 0; f < frames; f++) {
   await page.clock.runFor(FRAME_MS); // page timers and Date move in lockstep
   await page.evaluate((dt) => window.__app.step(dt), 1 / FPS);
   const png = await page.screenshot({ type: 'png', timeout: 180000 });
-  if (!ff.stdin.write(png)) await new Promise((r) => ff.stdin.once('drain', r));
-  log.push({ f, s: +sv.toFixed(4), t: +vt.toFixed(3), job: await page.evaluate(() => window.__app.job?.a + (window.__app.job?.b ? '>' + window.__app.job.b : '')) });
+  writeFileSync(frameFile(f) + '.tmp', png);
+  renameSync(frameFile(f) + '.tmp', frameFile(f));
+  appendFileSync(logFile, JSON.stringify({ f, s: +sv.toFixed(4), t: +vt.toFixed(3), job: await page.evaluate(() => window.__app.job?.a + (window.__app.job?.b ? '>' + window.__app.job.b : '')) }) + '\n');
   if (f % 60 === 0) {
-    const el = (Date.now() - t0) / 1000;
-    console.log(`  frame ${f}/${frames}  s=${sv.toFixed(2)}  ${(el / (f + 1)).toFixed(2)} s/frame  eta ${(((frames - f) * el) / (f + 1) / 60).toFixed(1)} min`);
+    const el = (Date.now() - t0) / 1000, n = f - done + 1;
+    console.log(`  frame ${f}/${frames}  s=${sv.toFixed(2)}  ${(el / n).toFixed(2)} s/frame  eta ${(((frames - f) * el) / n / 60).toFixed(1)} min`);
   }
 }
-ff.stdin.end();
-await ffDone;
-writeFileSync(out.replace(/\.mp4$/, '.frames.json'), JSON.stringify({ W, H, DPR, FPS, vh, frames: log }, null, 0));
-console.log(`wrote ${out} in ${((Date.now() - t0) / 60000).toFixed(1)} min; page errors: ${errors.length ? errors.join(' | ') : 'none'}`);
 await browser.close();
+// encode: PNG sequence -> x264 crf 13, yuv420p, faststart
+const enc = spawnSync('ffmpeg', ['-loglevel', 'error', '-y', '-framerate', String(FPS), '-i', `${framesDir}/f%05d.png`, '-frames:v', String(frames), '-c:v', 'libx264', '-preset', 'slow', '-crf', crf, '-pix_fmt', 'yuv420p', '-movflags', '+faststart', out], { stdio: 'inherit' });
+if (enc.status !== 0) throw new Error('ffmpeg encode failed');
+const log = readFileSync(logFile, 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l));
+writeFileSync(out.replace(/\.mp4$/, '.frames.json'), JSON.stringify({ W, H, DPR, FPS, vh, frames: log }, null, 0));
+console.log(`wrote ${out} (${frames} frames); page errors: ${errors.length ? errors.join(' | ') : 'none'}`);
+if (process.argv.includes('--keep-frames') === false) rmSync(framesDir, { recursive: true, force: true });
+
