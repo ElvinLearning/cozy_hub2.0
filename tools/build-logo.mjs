@@ -121,3 +121,23 @@ function svg(w, h, defs, body, title) {
 }
 
 console.log('logos written to', OUT);
+
+// ---------- warm colourway (cozy branch): same marks, hot-chocolate palette ----------
+{
+  const WARM = {
+    [BRAND.violet]: '#f0a43c', // honey
+    [BRAND.indigo]: '#dc6a32', // amber
+    [BRAND.cyan]: '#b4432e', // blanket red
+    [BRAND.ink]: '#3a2519', // cocoa
+    '#edf0ed': '#3a2519',
+    '#fff': '#e9a046',
+  };
+  for (const f of ['cozy-mark', 'cozy-icon', 'cozy-favicon', 'cozy-logo-horizontal', 'cozy-logo-horizontal-mono', 'cozy-logo-badge']) {
+    let s = readFileSync(`${OUT}/${f}.svg`, 'utf8');
+    for (const [a, b] of Object.entries(WARM)) s = s.split(`"${a}"`).join(`"${b}"`);
+    // on paper the wordmark reads best in solid cocoa rather than the light end of the gradient
+    if (f === 'cozy-logo-horizontal') s = s.replace(/fill="url\(#hz-word\)"/, 'fill="#3a2519"');
+    writeFileSync(`${OUT}/${f}-warm.svg`, s);
+  }
+  console.log('warm variants written');
+}

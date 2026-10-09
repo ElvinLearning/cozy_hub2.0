@@ -4,6 +4,7 @@ import { cpSync, mkdirSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
 const nm = 'node_modules';
+// (three.js is not used on the cozy branch; kept for the dark branch)
 const out = 'public/vendor/three';
 mkdirSync(join(out, 'addons/utils'), { recursive: true });
 mkdirSync(join(out, 'addons/geometries'), { recursive: true });

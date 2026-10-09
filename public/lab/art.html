@@ -1,0 +1,23 @@
+<!doctype html><html><head><meta charset="utf-8"><title>art lab</title>
+<link rel="stylesheet" href="/css/art.css">
+<style>
+@font-face { font-family: "Fraunces"; src: url(/fonts/fraunces-latin-full-normal.woff2) format("woff2"); font-weight: 100 900; }
+body { margin: 0; background: #f7efe2; display: flex; flex-wrap: wrap; gap: 24px; padding: 24px; }
+.cell { width: 600px; }
+.cell.tvScene, .cell.couchScene { width: 900px; } .cell.agentScene { width: 400px; }
+</style></head><body>
+<script type="module">
+import * as A from '/js/cozy/art.js';
+const want = new URLSearchParams(location.search).get('s');
+const scenes = Object.entries(A).filter(([k, v]) => k.endsWith('Scene') && typeof v === 'function' && (!want || want.split(',').includes(k)));
+for (const [k, f] of scenes) { const d = document.createElement('div'); d.className = 'cell ' + k; d.innerHTML = f(); document.body.append(d); }
+document.body.dataset.ready = 1;
+</script></body></html>
+<script type="module">
+import * as A from '/js/cozy/art.js';
+if (new URLSearchParams(location.search).get('extra')) {
+  const d = document.createElement('div'); d.style.cssText = 'display:flex;gap:20px;align-items:end;width:100%';
+  d.innerHTML = ['cup','mug','pot'].map(k => `<div style="width:240px">${A.pricingArt(k)}</div>`).join('') + `<svg class="art" viewBox="0 0 220 220" style="width:220px;background:#3b271d">${A.kitten(110, 210, 1)}</svg>`;
+  document.body.prepend(d);
+}
+</script>

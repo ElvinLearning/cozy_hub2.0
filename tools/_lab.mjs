@@ -1,0 +1,15 @@
+import { chromium } from 'playwright';
+const [scene = '', out = 'lab.png', W = '1300', H = '700', anim = '0'] = process.argv.slice(2);
+const b = await chromium.launch();
+const p = await b.newPage({ viewport: { width: +W, height: +H } });
+const errs = [];
+p.on('pageerror', (e) => errs.push(e.message));
+p.on('console', (m) => m.type() === 'error' && errs.push(m.text()));
+await p.goto(`http://localhost:8090/lab/art.html?${scene.startsWith('extra') ? 'extra=1&s=none' : 's=' + scene}`);
+await p.waitForSelector('body[data-ready]');
+await p.evaluate(() => document.fonts.ready);
+if (anim === '0') await p.addStyleTag({ content: '.art *{animation-play-state:paused!important}' });
+await p.waitForTimeout(300);
+await p.screenshot({ path: out, fullPage: true });
+console.log('ok', errs.join(' | '));
+await b.close();

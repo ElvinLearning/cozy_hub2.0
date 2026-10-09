@@ -3,198 +3,197 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Cozy Digital · AI video for your business</title>
-  <meta name="description" content="Send us your photos, products and logo. Cozy Digital turns them into scroll-stopping AI video for your ads and your feed, every month.">
-  <meta name="theme-color" content="#08090b">
-  <link rel="icon" href="/brand/cozy-favicon.svg" type="image/svg+xml">
+  <title>Cozy Digital · Warm little films for your business</title>
+  <meta name="description" content="Send a few photos of your business. Cozy Digital turns them into short AI videos for your socials, finished by people. Plans from $40 a month.">
+  <meta name="theme-color" content="#f7efe2">
+  <link rel="icon" href="/brand/cozy-favicon-warm.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
-  <meta property="og:title" content="Cozy Digital · AI video for your business">
-  <meta property="og:description" content="Your photos in. Scroll-stopping video out. Every month.">
+  <meta property="og:title" content="Cozy Digital · Warm little films for your business">
+  <meta property="og:description" content="Send a few photos. Get short videos for your socials, made with AI and finished by people.">
   <meta property="og:image" content="/brand/og-image.jpg">
-  <meta property="og:type" content="website">
-  <link rel="preload" href="/fonts/inter-tight-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/instrument-serif-latin-400-italic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/tokens.css">
-  <link rel="stylesheet" href="/css/site.css">
-  <script type="importmap">
-  { "imports": {
-      "three": "/vendor/three/three.module.min.js",
-      "three/addons/": "/vendor/three/addons/"
-  } }
-  </script>
-  <script type="module" src="/js/main.js"></script>
+  <link rel="preload" href="/fonts/fraunces-latin-full-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/cozy.css">
+  <link rel="stylesheet" href="/css/art.css">
 </head>
-<body class="is-loading">
-  <a class="skip" href="#start">Skip to the sign-up form</a>
-  <canvas id="gl" aria-hidden="true"></canvas>
-  <div class="veil" id="veil" aria-hidden="true"><img src="/brand/cozy-mark.svg" alt="" width="56" height="56"></div>
+<body class="tier-0">
+  <a class="skip" href="#main">Skip to content</a>
 
-  <header class="nav" id="nav">
-    <a class="nav-brand" href="#top" aria-label="Cozy Digital home"><img src="/brand/cozy-logo-horizontal.svg" alt="Cozy Digital" height="30"></a>
-    <nav class="nav-links" aria-label="Sections">
-      <a href="#how">How it works</a>
-      <a href="#work">Work</a>
-      <a href="#agent">Cozy Agent</a>
-      <a href="#pricing">Pricing</a>
-    </nav>
-    <a class="btn btn-solid nav-cta" href="#start">Start a project <span aria-hidden="true">↗</span></a>
+  <header class="masthead">
+    <a class="brand" href="#top" aria-label="Cozy Digital, back to top"><img src="/brand/cozy-logo-horizontal-warm.svg" alt="" width="168" height="40"></a>
+    <a class="masthead-cta" href="#start">Start a project</a>
   </header>
 
-  <div class="content" id="content">
-    <!-- 1 · hero -->
-    <section class="stage" id="top" data-stage="hero" aria-labelledby="hero-title">
-      <div class="pin" data-pin="hero">
-        <div class="hero-copy" id="hero-copy">
-          <p class="eyebrow"><span class="dot"></span>Cozy Digital · AI video studio</p>
+  <main id="main">
+    <!-- 01 · Hello. The ring of letters is the page's one motif: it has an
+         intro, an ambient turn, and it is what you dive through into the mug. -->
+    <section class="ch ch-hero" id="top" data-chapter="01" data-title="Hello" aria-labelledby="hero-title">
+      <div class="stage">
+        <div class="hero-copy">
+          <p class="kicker"><span class="dot" aria-hidden="true"></span>AI video studio for small businesses</p>
           <h1 id="hero-title" class="display">
-            <span class="line"><span>Your business,</span></span>
-            <span class="line"><em>in motion.</em></span>
+            <span class="sr-only">Cozy Digital: </span>Warm little films <em>for your business.</em>
           </h1>
-          <p class="lede">Send us your photos, products and logo. We turn them into scroll-stopping AI video for your ads and your feed, every month.</p>
-          <div class="cta-row">
-            <a class="btn btn-solid" href="#start">Start your first video <span aria-hidden="true">↗</span></a>
-            <a class="btn btn-ghost" href="#work">See the work</a>
+          <p class="lede">Send a few photos of your shop, your counter, the thing you make. We turn them into short videos for your socials. Made with AI, finished by people who care.</p>
+          <div class="ctas">
+            <a class="btn btn-solid" href="#start">Start with 5 videos</a>
+            <a class="btn btn-ghost" href="#reel">Watch the reel</a>
           </div>
           <p class="fine" id="hero-price">Plans from $40 a month.</p>
         </div>
-        <div class="scroll-cue" id="scroll-cue" aria-hidden="true"><span>Scroll</span><i></i></div>
-      </div>
-    </section>
-
-    <!-- 2 · you send -->
-    <section class="stage" id="how" data-stage="assets" aria-labelledby="assets-title">
-      <div class="pin" data-pin="assets">
-        <div class="side-copy" id="assets-copy">
-          <p class="eyebrow">01 · You send</p>
-          <h2 id="assets-title" class="display">Send us what you <em>already have.</em></h2>
-          <p>Phone photos of your shop. Your products on the counter. Your logo. One sentence about who buys from you. That's the whole brief.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3 · the signature moment -->
-    <section class="stage" data-stage="dissolve" aria-labelledby="dissolve-title">
-      <div class="pin" data-pin="dissolve">
-        <div class="dissolve-copy">
-          <h2 id="dissolve-title" class="display" data-beat-title>We turn it into <em>film.</em></h2>
-          <ol class="beats">
-            <li data-beat="0"><b>We break it down</b><span>Every photo becomes a first frame: your subject, your light, the mood of your place.</span></li>
-            <li data-beat="1"><b>We direct it</b><span>Camera moves, hooks and pacing picked for ads people watch past the first second.</span></li>
-            <li data-beat="2"><b>It moves</b><span>Vertical for Reels and TikTok, widescreen for YouTube and your site. Ready to post.</span></li>
-          </ol>
-        </div>
-        <div class="film-cap" id="film-cap" aria-hidden="true"><span>One photo in.</span> <span>One film out.</span></div>
-      </div>
-    </section>
-
-    <section class="stage" data-stage="film" aria-hidden="true"></section>
-
-    <!-- 4 · work -->
-    <section class="flow reel" id="work" data-flow="reel" aria-labelledby="work-title">
-      <div class="wrap">
-        <header class="sec-head" data-r>
-          <p class="eyebrow">02 · Made in our studio</p>
-          <h2 id="work-title" class="display">Work that stops <em>the scroll.</em></h2>
-          <p>Every shot here was generated in our studio. No cameras, no crews, no stock footage.</p>
-        </header>
-        <!-- three bands on a 12-column grid: big tile left, big tile centre, big tile right -->
-        <div class="reel-grid" id="reel-grid">
-          <figure class="clip big" style="grid-area: 1 / 1 / 3 / 9" data-r><video muted loop playsinline preload="none" poster="/media/reel/hf-b.jpg" data-src="/media/reel/hf-b.mp4"></video><figcaption>Storefront, night rain</figcaption></figure>
-          <figure class="clip" style="grid-area: 1 / 9 / 2 / 13" data-r><video muted loop playsinline preload="none" poster="/media/reel/shot-02.jpg" data-src="/media/reel/shot-02.mp4"></video><figcaption>Bar, city lights</figcaption></figure>
-          <figure class="clip" style="grid-area: 2 / 9 / 3 / 13" data-r><video muted loop playsinline preload="none" poster="/media/reel/shot-09.jpg" data-src="/media/reel/shot-09.mp4"></video><figcaption>Boardroom</figcaption></figure>
-          <figure class="clip" style="grid-area: 3 / 1 / 4 / 5" data-r><video muted loop playsinline preload="none" poster="/media/reel/shot-03.jpg" data-src="/media/reel/shot-03.mp4"></video><figcaption>Late-night desk</figcaption></figure>
-          <figure class="clip big" style="grid-area: 3 / 5 / 5 / 9" data-r><video muted loop playsinline preload="none" poster="/media/reel/shot-06-first.jpg" data-src="/media/reel/shot-06.mp4"></video><figcaption>Bar portrait</figcaption></figure>
-          <figure class="clip" style="grid-area: 3 / 9 / 4 / 13" data-r><video muted loop playsinline preload="none" poster="/media/reel/shot-07.jpg" data-src="/media/reel/shot-07.mp4"></video><figcaption>Back seat, paperwork</figcaption></figure>
-          <figure class="clip" style="grid-area: 4 / 1 / 5 / 5" data-r><video muted loop playsinline preload="none" poster="/media/reel/shot-05.jpg" data-src="/media/reel/shot-05.mp4"></video><figcaption>Bar conversation</figcaption></figure>
-          <figure class="clip" style="grid-area: 4 / 9 / 5 / 13" data-r><video muted loop playsinline preload="none" poster="/media/reel/shot-10.jpg" data-src="/media/reel/shot-10.mp4"></video><figcaption>City at night</figcaption></figure>
-          <figure class="clip" style="grid-area: 5 / 1 / 6 / 5" data-r><video muted loop playsinline preload="none" poster="/media/reel/shot-01.jpg" data-src="/media/reel/shot-01.mp4"></video><figcaption>Lounge, two-shot</figcaption></figure>
-          <figure class="clip" style="grid-area: 6 / 1 / 7 / 5" data-r><video muted loop playsinline preload="none" poster="/media/reel/shot-08.jpg" data-src="/media/reel/shot-08.mp4"></video><figcaption>Back seat, suit</figcaption></figure>
-          <figure class="clip big" style="grid-area: 5 / 5 / 7 / 13" data-r><video muted loop playsinline preload="none" poster="/media/reel/hf-d.jpg" data-src="/media/reel/hf-d.mp4"></video><figcaption>Talking to camera</figcaption></figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5 · cozy agent -->
-    <section class="stage" id="agent" data-stage="agent" aria-labelledby="agent-title">
-      <div class="pin" data-pin="agent">
-        <div class="agent-grid">
-          <div class="side-copy" id="agent-copy">
-            <p class="eyebrow">03 · The Cozy Agent</p>
-            <h2 id="agent-title" class="display">Your own creative director, <em>on call.</em></h2>
-            <p>The Cozy Agent learns your brand once: your products, your voice, your colors. Then it writes the hooks, plans the shots and makes the cuts. Ask for three weekend promos and get three.</p>
-            <ul class="ticks">
-              <li>Trained on your brand file</li>
-              <li>Scripts, hooks and shot lists written for you</li>
-              <li>Revisions right in the chat</li>
-            </ul>
-            <a class="btn btn-ghost" href="#pricing">Included in the Cozy Agent plan</a>
+        <div class="hero-world" aria-hidden="true">
+          <div class="world">
+            <div class="hero-art" data-art="heroScene"></div>
+            <div class="ring-tilt"><div class="ring" data-word="Cozy Digital"></div></div>
           </div>
-          <div class="chat" id="chat" aria-label="Example conversation with the Cozy Agent">
-            <div class="chat-top"><img src="/brand/cozy-mark.svg" alt="" width="22" height="22"><b>Cozy Agent</b><span>example conversation</span></div>
-            <div class="bubble me" data-chat="0">Weekends are slow. Can we push the croissants?</div>
-            <div class="bubble ai" data-chat="1">Three ideas:<br>1. Oven door opens at 6am, steam in the window light.<br>2. Slow pan down the counter, the sold-out sign flips at the end.<br>3. Hands tear a croissant, flakes falling in slow motion.<br>Making #1 now, vertical and wide.</div>
-            <div class="bubble ai files" data-chat="2">
-              <span class="file"><i class="v"></i>croissant-dawn · 9:16</span>
-              <span class="file"><i class="w"></i>croissant-dawn · 16:9</span>
-              <small>Next: #3 as a 3-second hook?</small>
+        </div>
+        <div class="dive" aria-hidden="true"><div class="dive-swirl"></div></div>
+        <p class="scroll-hint" aria-hidden="true">Scroll for cocoa</p>
+      </div>
+    </section>
+
+    <!-- 02 + 03 · You send, we make. One pinned stage: the garland of photos,
+         then the camera drops to the TV and the photo becomes the film. -->
+    <section class="ch ch-studio" id="send" data-chapter="02" data-title="You send" aria-labelledby="send-title">
+      <span class="anchor" id="make" data-chapter="03" data-title="We make" aria-hidden="true"></span>
+      <div class="stage">
+        <div class="garland-room">
+          <div class="studio-copy copy-send">
+            <p class="kicker light"><span class="num">02</span> You send</p>
+            <h2 id="send-title" class="display">A few photos is plenty.</h2>
+            <p class="lede">Phone pictures are perfect. Your shopfront at closing time, the counter, a regular's favourite order. Drop them in the form below, or text them to us.</p>
+          </div>
+          <div class="garland">
+            <svg class="garland-wire" viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
+            <figure class="polaroid" data-i="0" style="--x:9%;--y:22%;--r:-6deg"><img src="/media/reel/shot-02.jpg" alt="" loading="lazy" decoding="async"><figcaption>the rainy shift</figcaption></figure>
+            <figure class="polaroid hero-print" data-i="1" style="--x:31%;--y:34%;--r:4deg"><img src="/media/reel/shot-06-first.jpg" alt="" decoding="async"><figcaption>after hours</figcaption></figure>
+            <figure class="polaroid" data-i="2" style="--x:54%;--y:36%;--r:-3deg"><img src="/media/reel/hf-b.jpg" alt="" loading="lazy" decoding="async"><figcaption>the regulars</figcaption></figure>
+            <figure class="polaroid" data-i="3" style="--x:76%;--y:26%;--r:7deg"><img src="/media/reel/shot-09.jpg" alt="" loading="lazy" decoding="async"><figcaption>the big meeting</figcaption></figure>
+            <div class="kitten-slot" data-art="kittenArt" aria-hidden="true"></div>
+          </div>
+        </div>
+        <div class="tv-room">
+          <div class="tv-box">
+            <div class="tv-art" data-art="tvScene"></div>
+            <div class="tv-screen" aria-hidden="true">
+              <video class="tv-film" muted playsinline loop preload="auto" poster="/media/reel/shot-06-first.jpg" data-src="/media/reel/shot-06"></video>
             </div>
-            <div class="bubble me" data-chat="3">Yes. And put our logo on the last frame.</div>
-            <div class="typing" data-chat="4"><i></i><i></i><i></i></div>
           </div>
+          <div class="studio-copy copy-make">
+            <p class="kicker light"><span class="num">03</span> We make</p>
+            <h2 class="display">Your photo, now a film.</h2>
+            <ul class="facts">
+              <li><b>Real footage of your place.</b> We animate your own photos, not stock clips.</li>
+              <li><b>People in the loop.</b> Every clip is picked, trimmed and checked by us before you see it.</li>
+              <li><b>Ready to post.</b> Vertical and widescreen cuts, back in about 48 hours.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="flying-print" aria-hidden="true"><img src="/media/reel/shot-06-first.jpg" alt=""></div>
+      </div>
+    </section>
+
+    <!-- 04 · Reel -->
+    <section class="ch ch-reel" id="reel" data-chapter="04" data-title="The reel" aria-labelledby="reel-title">
+      <div class="wrap">
+        <header class="ch-head">
+          <p class="kicker"><span class="num">04</span> The reel</p>
+          <h2 id="reel-title" class="display">Made for the places you post.</h2>
+          <p class="lede narrow">A few clips from the studio. Each one started as a still photo and a sentence about the business.</p>
+        </header>
+        <div class="reel-grid" id="reel-grid">
+          <figure class="clip tall"><video muted playsinline loop preload="none" poster="/media/reel/hf-a.jpg" data-src="/media/reel/hf-a"></video><figcaption><span>No. 01</span> Late shift, corner store <i>9:16 · 8 s</i></figcaption></figure>
+          <figure class="clip"><video muted playsinline loop preload="none" poster="/media/reel/shot-05.jpg" data-src="/media/reel/shot-05"></video><figcaption><span>No. 02</span> The reading lamp <i>16:9 · 5 s</i></figcaption></figure>
+          <figure class="clip"><video muted playsinline loop preload="none" poster="/media/reel/hf-c.jpg" data-src="/media/reel/hf-c"></video><figcaption><span>No. 03</span> Cocktail bar, golden hour <i>16:9 · 8 s</i></figcaption></figure>
+          <figure class="clip wide"><video muted playsinline loop preload="none" poster="/media/reel/shot-10.jpg" data-src="/media/reel/shot-10"></video><figcaption><span>No. 04</span> The deal is done <i>16:9 · 6 s</i></figcaption></figure>
+          <figure class="clip"><video muted playsinline loop preload="none" poster="/media/reel/shot-07.jpg" data-src="/media/reel/shot-07"></video><figcaption><span>No. 05</span> Ride home <i>16:9 · 5 s</i></figcaption></figure>
         </div>
       </div>
     </section>
 
-    <!-- 6 · pricing -->
-    <section class="flow pricing" id="pricing" data-flow="pricing" aria-labelledby="pricing-title">
+    <!-- 05 · Cozy Agent -->
+    <section class="ch ch-agent" id="agent" data-chapter="05" data-title="Cozy Agent" aria-labelledby="agent-title">
+      <div class="wrap agent-grid">
+        <div class="agent-art" data-art="agentScene"></div>
+        <div class="agent-copy">
+          <p class="kicker"><span class="num">05</span> The Cozy Agent</p>
+          <h2 id="agent-title" class="display">Your own little creative department.</h2>
+          <p class="lede">The Cozy Agent learns your brand from your photos and a short chat. Then it writes the ideas, the hooks and the shot list, and sends back finished cuts. Ask for changes in plain words, as often as you like.</p>
+          <ol class="chat" aria-label="Example conversation with the Cozy Agent">
+            <li class="me">Can we do three clips for the winter menu? Cosy, not cheesy.</li>
+            <li class="bot">On it. Steam off the cocoa at the window, snow outside, your sign glowing. Hooks below. Cutting the first one now.</li>
+            <li class="bot card"><b>Take 01 · ready</b><span>9:16 · 7 s · "First snow, first cocoa."</span></li>
+          </ol>
+          <a class="btn btn-solid" href="#start" data-plan="agent">Get the Cozy Agent</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 · Pricing -->
+    <section class="ch ch-pricing" id="pricing" data-chapter="06" data-title="Pricing" aria-labelledby="pricing-title">
       <div class="wrap">
-        <header class="sec-head" data-r>
-          <p class="eyebrow">04 · Pricing</p>
-          <h2 id="pricing-title" class="display">Video every month, <em>one simple plan.</em></h2>
-          <p>Pick a plan, send your stuff, get finished videos every month. Need more? Add a pack anytime.</p>
+        <header class="ch-head">
+          <p class="kicker"><span class="num">06</span> Pricing</p>
+          <h2 id="pricing-title" class="display">Pick your mug.</h2>
+          <p class="lede narrow">Monthly plans, cancel any time. One video is one finished clip, up to about 10 seconds.</p>
         </header>
         <div class="plans" id="plans" aria-live="polite"></div>
-        <p class="packs" id="packs" data-r></p>
+        <p class="packs" id="packs"></p>
       </div>
     </section>
 
-    <!-- 7 · start -->
-    <section class="flow start" id="start" data-flow="start" aria-labelledby="start-title">
+    <!-- 07 · Start -->
+    <section class="ch ch-start" id="start" data-chapter="07" data-title="Start" aria-labelledby="start-title">
+      <div class="home-art" data-art="couchScene"></div>
       <div class="wrap start-grid">
-        <header class="sec-head" data-r>
-          <p class="eyebrow">05 · Start</p>
-          <h2 id="start-title" class="display">Let's make <em>your first one.</em></h2>
-          <p>Tell us about your business and drop in a few photos. We'll come back with your first concept.</p>
-        </header>
-        <form class="lead" id="lead-form" novalidate data-r>
-          <div class="two">
-            <label><span>Your name</span><input name="name" autocomplete="name" placeholder="Ana Ruiz" required></label>
-            <label><span>Email</span><input name="email" type="email" autocomplete="email" placeholder="ana@yourshop.com" required></label>
+        <div class="start-copy">
+          <p class="kicker light"><span class="num">07</span> Start</p>
+          <h2 id="start-title" class="display">Pull up a chair.</h2>
+          <p class="lede">Tell us about your business and add a few photos. We'll reply within a day with a first idea, free.</p>
+        </div>
+        <form class="lead" id="lead-form" novalidate>
+          <div class="row">
+            <label>Your name<input name="name" autocomplete="name" required></label>
+            <label>Email<input name="email" type="email" autocomplete="email" required></label>
           </div>
-          <div class="two">
-            <label><span>Business</span><input name="business" autocomplete="organization" placeholder="Ana's Bakery"></label>
-            <label><span>Website or Instagram <small>optional</small></span><input name="website" inputmode="url" placeholder="@anasbakery"></label>
+          <div class="row">
+            <label>Business<input name="business" autocomplete="organization" placeholder="The Corner Bakery"></label>
+            <label>Plan<select name="plan" id="lead-plan"><option value="">Not sure yet</option></select></label>
           </div>
-          <label>Plan<select name="plan" id="lead-plan"><option value="">Not sure yet</option></select></label>
-          <label><span>What do you sell, and to who?</span><textarea name="message" rows="3" placeholder="Sourdough and pastries for the neighbourhood. Busy mornings, slow weekends."></textarea></label>
-          <label class="hp" aria-hidden="true">Company site<input name="company_site" tabindex="-1" autocomplete="off"></label>
-          <div class="dropzone" id="dropzone">
-            <input type="file" id="lead-files" multiple accept="image/*,video/mp4,video/quicktime,video/webm,application/pdf">
-            <p><b>Drop photos, your logo or a clip here</b><span>or tap to choose · up to 12 files</span></p>
-            <ul class="picked" id="picked"></ul>
+          <label>Website or Instagram <span class="opt">(optional)</span><input name="website" autocomplete="url" placeholder="@thecornerbakery"></label>
+          <label class="hp" aria-hidden="true">Leave this empty<input name="company_site" tabindex="-1" autocomplete="off"></label>
+          <label>What should the videos do?<textarea name="message" rows="3" placeholder="Bring people in for the winter menu"></textarea></label>
+          <label class="drop" id="dropzone">
+            <input type="file" id="lead-files" name="files" multiple accept="image/*,video/*">
+            <span><b>Add photos</b> or drop them here. Up to 12.</span>
+          </label>
+          <ul class="picked" id="picked"></ul>
+          <div class="submit-row">
+            <button class="btn btn-solid" id="lead-submit" type="submit">Send it over</button>
+            <p class="form-msg" id="lead-msg" role="status"></p>
           </div>
-          <button class="btn btn-solid btn-wide" type="submit" id="lead-submit">Send it over <span aria-hidden="true">↗</span></button>
-          <p class="form-msg" id="lead-msg" role="status" aria-live="polite"></p>
         </form>
       </div>
-      <div class="end-space" aria-hidden="true"></div>
       <footer class="foot wrap">
-        <img src="/brand/cozy-logo-horizontal-mono.svg" alt="Cozy Digital" height="24">
-        <span>© <span id="year">2026</span> Cozy Digital</span>
-        <a href="https://www.cozydigital.org">cozydigital.org</a>
+        <img src="/brand/cozy-logo-horizontal-mono-warm.svg" alt="Cozy Digital" width="150" height="36">
+        <p>Made warm in a small studio. Videos made with AI and finished by hand.</p>
+        <p class="fine">© <span id="year">2026</span> Cozy Digital</p>
       </footer>
     </section>
-  </div>
-  <noscript><style>.content{position:static!important;transform:none!important}.veil{display:none}</style></noscript>
+  </main>
+
+  <canvas class="snow-layer" aria-hidden="true"></canvas>
+
+  <nav class="pill" aria-label="Chapters">
+    <button class="pill-btn" aria-expanded="false" aria-controls="pill-list">
+      <img src="/brand/cozy-icon-warm.svg" alt="" width="26" height="26">
+      <span class="pill-now"><span class="pill-num">01</span> <span class="pill-title">Hello</span></span>
+      <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 8 L6 4 L10 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+    <ol class="pill-list" id="pill-list" hidden></ol>
+    <a class="pill-cta" href="#start">Start</a>
+  </nav>
+
+  <noscript><style>.ring, .dive, .flying-print, .snow-layer { display: none } .ch-studio .stage, .ch-hero .stage { position: relative; height: auto } .tv-room { position: relative; transform: none } </style></noscript>
+  <script type="module" src="/js/cozy/main.js"></script>
 </body>
 </html>
