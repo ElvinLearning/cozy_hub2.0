@@ -1,11 +1,12 @@
 node_modules/
-data/*.json
-!data/.gitkeep
+/data/*
+!/data/.gitkeep
 .env
+.env.*
+!.env.example
 workbench/**/frames/
 workbench/**/*.png.tmp
 *.log
-node_modules
 workbench/shots/
 workbench/film/*.mp4
 workbench/film/*-frames/

@@ -5,12 +5,37 @@ ring and a shared scroll clock, an admin panel that talks straight to the
 Higgsfield API, and the **Cozy Agent**, our branded creative agent on top of
 Higgsfield's Agent API.
 
+## Run locally with WSL and SSH
+
+The finished landing page is on `codex/cozy-cinematic-landing-20261009`, branched
+from `claude/zen-dirac-16uhgf`. Run these commands **inside Ubuntu / WSL**, with
+GitHub SSH access and [nvm](https://github.com/nvm-sh/nvm) already configured:
+
 ```bash
-npm start            # http://localhost:8080 (landing) and /admin/
+mkdir -p ~/projects
+cd ~/projects
+git clone --depth 1 --single-branch \
+  --branch codex/cozy-cinematic-landing-20261009 \
+  git@github.com:ElvinLearning/cozy_hub2.0.git cozy-digital
+cd cozy-digital
+nvm install
+nvm use
+npm test
+npm start
 ```
 
-Node 20+. Zero runtime dependencies, no build step. If `ADMIN_PASSWORD` is not
-set, a one-time password is printed when the server starts.
+Open **http://localhost:8080** in your Windows browser. The admin panel is at
+**http://localhost:8080/admin/**. If `ADMIN_PASSWORD` is unset, the server prints
+a one-time admin password at startup. Stop the server with **Ctrl+C**.
+
+**[Full WSL, SSH, and local development guide](docs/LOCAL_DEVELOPMENT.md)** —
+includes first-time setup, restarting, updating, and troubleshooting.
+
+`.nvmrc` selects Node 24; the app supports Node 20+. There are zero runtime
+dependencies and no build step. **You do not need `npm install` or a Higgsfield
+API key to preview the site or run its tests.** The finished video loops,
+posters, portraits, fonts, and logos are included in the repository. Local
+leads and uploads stay in the Git-ignored `data/` directory.
 
 ## What's here
 
@@ -87,10 +112,16 @@ agent plans and generates, and the URLs it returns play inline.
 
 ```bash
 npm test                       # API tests against the mock Higgsfield (16 tests)
-node tools/smoke-admin.mjs     # admin panel end to end in a real browser
+npm run dev                    # restart the Node server when watched modules change
 npm run mock:hf                # mock API on :8787 -> HF_KEY=mock:mock HF_BASE_URL=http://127.0.0.1:8787 npm start
 npm run logo                                 # rebuild the SVG marks from Quicksand outlines
 ```
+
+Refresh your browser after editing frontend files; `npm run dev` does not add
+browser hot reload. Logo and vendor maintenance tools need the optional
+development packages (`npm ci`). The historical `node tools/smoke-admin.mjs`
+browser check additionally requires Playwright and its browser binaries; it
+is not part of the dependency-free local start or `npm test`.
 
 ### How the landing page works
 
