@@ -1,7 +1,7 @@
 # Cozy Hub 2.0
 
-The Cozy Digital AI-video product: a scroll-driven three.js landing page that
-sells monthly AI video to businesses, an admin panel that talks straight to the
+The Cozy Digital AI-video product: a photographic landing page with a CSS letter
+ring and a shared scroll clock, an admin panel that talks straight to the
 Higgsfield API, and the **Cozy Agent**, our branded creative agent on top of
 Higgsfield's Agent API.
 
@@ -16,17 +16,22 @@ set, a one-time password is printed when the server starts.
 
 | Path | What it is |
 | --- | --- |
-| `public/index.html`, `public/js/`, `public/css/` | Landing page. Raw three.js (vendored, ES modules + importmap). |
+| `public/index.html`, `public/css/site.css` | Landing page: six chapters, native page flow, responsive layouts. |
+| `public/js/main.js`, `landing-motion.js`, `media.js` | Plain ES modules for the shared motion clock, navigation, and visible-only video playback. No WebGL or animation library is loaded. |
+| `public/js/dom.js` | Existing pricing, lead form, uploads, and reel contracts. |
+| `public/media/cozy/` | Higgsfield scene options, current posters, historical tribute portraits, and asset provenance. |
 | `public/admin/` | Admin panel: generate, jobs, Cozy Agent chat, customers + credits, leads, pricing. |
 | `server/` | `node:http` server: static files with byte ranges, the admin API, Higgsfield client, JSON store. |
-| `config/plans.json` | **Pricing.** Every price on the landing page and every credit grant reads from here. Draft numbers. |
+| `config/plans.json` | **Pricing.** The landing page loads the current plans through `GET /api/plans`. |
 | `config/models.json` | Higgsfield model ids, starting arguments and credit cost per model. |
 | `tools/` | Mock Higgsfield, tests, screenshot / film / optical-flow / timeline tools, logo builder. |
 | `workbench/` | Builder/critic rounds, scores, reference crops, art bible, motion QA. Open `workbench/index.html`. |
 
 ## Environment
 
-Copy `.env.example` to `.env` (never commit it). Keys live in env vars only.
+Supply secrets through your host's environment settings or the process
+environment. Keep API keys out of files and source control. `.env.example`
+documents the variable names without live credentials.
 
 | Variable | Purpose |
 | --- | --- |
@@ -57,9 +62,11 @@ public catalogs and are marked `verified: false`. To confirm one:
 
 The admin panel's **Raw JSON** mode sends any model id and body unchanged.
 
-### Credits
+### Cozy customer credits
 
-1 credit means 1 finished video. Rules:
+In the customer ledger, 1 credit means 1 finished video. These are separate
+from the Higgsfield billing credits recorded for landing-page asset creation.
+Rules:
 
 - Each plan grants its monthly credits when you assign it to a customer.
 - A generation charges the model's `credits` from `config/models.json`.
@@ -82,31 +89,64 @@ agent plans and generates, and the URLs it returns play inline.
 npm test                       # API tests against the mock Higgsfield (16 tests)
 node tools/smoke-admin.mjs     # admin panel end to end in a real browser
 npm run mock:hf                # mock API on :8787 -> HF_KEY=mock:mock HF_BASE_URL=http://127.0.0.1:8787 npm start
-node tools/shoot.mjs <dir> 1440 900          # screenshot every named state
-node tools/film.mjs --out film.mp4           # frame-perfect 60 fps film of the full scroll
-python3 tools/flowscan.py film.mp4           # optical-flow jump scan (needs opencv-python-headless)
-node tools/check-timeline.mjs                # numeric camera / pin checks
 npm run logo                                 # rebuild the SVG marks from Quicksand outlines
 ```
 
 ### How the landing page works
 
-- **One clock.** Native scroll sets a target, and a critically damped spring
-  follows it (`public/js/scroll.js`). The DOM is translated by that value, and
-  every WebGL chapter reads the same number in the same frame.
-- **One timeline.** Every scroll-keyed number, in viewport heights, lives in
-  `public/js/timeline.js`. Pins ease in and out (`pinOffset`).
-- **Chapters.** Each chapter renders into its own half-float target: the loop
-  (hero), the studio (the signature photo → pixels → film) and the agent. One
-  composite pass mixes two chapters with a ring iris or a pixel mosaic, then
-  runs a bloom pyramid, an ACES shoulder, sRGB and a static dither
-  (`public/js/gfx/pipeline.js`).
-- **Isolation.** A chapter that throws is switched off; the page keeps working.
-  Without WebGL the page is a static gradient. `prefers-reduced-motion` gives
-  instant scroll and still frames.
-- **Capture hooks.** `window.__app` exposes the layout, named states, `goto`,
-  `setScroll`, `step`, `seekMedia` and `skipIntro`. Debug output only appears
-  with `?debug`.
+- **One clock.** `landing-motion.js` has one animation-frame chain. It reads
+  native scroll position, computes chapter progress, and updates the letter
+  ring, hero zoom and crossfade, content reveals, and optional portrait drift.
+  Desktop wheel input is eased only for a fine pointer with hover support.
+  Touch and keyboard scrolling use the browser's native page flow.
+- **CSS ring.** The accessible heading keeps its name while decorative glyphs
+  are hidden from assistive technology. Glyph widths are measured after local
+  fonts load and converted into angles. A ResizeObserver refreshes geometry.
+  The radius, perspective, tilt, intro and revolution settings follow the
+  supplied design study and brief.
+- **Chapters.** Hello, How it works, Reel, Cozy Agent, Pricing, and Start.
+  Scrolling out of the sticky hero zooms toward the cocoa; How it works fades
+  over the scene. The bottom chapter disclosure supports keyboard navigation,
+  Escape, and destination-heading focus.
+- **Media.** `media.js` uses IntersectionObserver to load and play visible
+  muted, inline videos. MP4 has a WebM fallback. The hero has separate phone
+  sources. The shared scroll clock combines chapter crossfades and every
+  containing card's reveal opacity, so invisible media cannot keep playing.
+  Posters remain visible while a source is pending or unavailable.
+- **Reduced motion.** The ring holds still, all video sources unload to their
+  posters, wheel easing stops, reveals are readable, and the chapter transition
+  is a crossfade. The on-page motion control can also pause animation.
+- **Our inspirations.** The footer button or typing `cozy` outside a form opens
+  an accessible dialog with six AI-created historical tribute portraits.
+  Portrait links point to institutional biographies. Hovering or focusing a
+  portrait pauses the drift; phone and reduced-motion layouts stay still.
+- **Existing contracts.** `dom.js` still loads `/api/plans`, fills pricing and
+  the plan selector, and posts the original lead fields before uploading files.
+  The backend, admin panel, plan values, shared tokens, logos and reel files
+  are preserved.
+
+The older WebGL study modules, vendored resources, and `tools/shoot.mjs`,
+`tools/film.mjs`, and `tools/check-timeline.mjs` are retained as historical
+workbench material. Their old `window.__app` capture hooks are not the current
+landing-page interface.
+
+### Landing media
+
+The user approved option B for all five scenes. Their Higgsfield Kling 3.0 Pro
+loops are integrated as `hero`, `send`, `make`, `agent`, and `closing`, with a
+separate `hero-mobile` 4:5 crop. Each has H.264 MP4, VP9 WebM, and a JPG poster
+extracted from its first decoded frame. Landscape files measure 1920×1080;
+the phone crop measures 1080×1350. Every video contains 120 frames at 24 fps
+for exactly five seconds, with no audio stream. Each web file is below 3 MB.
+Matching source images and a short local endpoint crossfade smooth the repeat
+boundary, including the moving steam in the café shots.
+
+Both original A/B still options and their two hero phone crops remain in
+`public/media/cozy/options/`. `asset-ledger.json` records generation prompts,
+model settings, source job IDs, public portrait references, measured file
+sizes and hashes, and the exact total generation debit: 71.5 credits
+(34 for stills including portraits, plus 37.5 for the five video jobs).
+No paid retries were used. The existing reel files remain unchanged.
 
 Video plays H.264 MP4 where the browser has it, with VP9 WebM next to every clip
 for browsers that don't (open-source Chromium).

@@ -3,198 +3,278 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Cozy Digital · AI video for your business</title>
-  <meta name="description" content="Send us your photos, products and logo. Cozy Digital turns them into scroll-stopping AI video for your ads and your feed, every month.">
+  <title>Cozy Digital · Your photos, made cinematic</title>
+  <meta name="description" content="Send a few photos of your business. Cozy Digital makes short AI videos for your socials, with every clip checked by a person. Explore the plans and start with five videos.">
   <meta name="theme-color" content="#08090b">
   <link rel="icon" href="/brand/cozy-favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png">
-  <meta property="og:title" content="Cozy Digital · AI video for your business">
-  <meta property="og:description" content="Your photos in. Scroll-stopping video out. Every month.">
-  <meta property="og:image" content="/brand/og-image.jpg">
+  <meta property="og:title" content="Cozy Digital · Your photos, made cinematic">
+  <meta property="og:description" content="A few photos of your business. A little cinematic magic. Human-checked AI videos, ready for your socials.">
+  <meta property="og:image" content="/media/cozy/hero-poster.jpg">
   <meta property="og:type" content="website">
   <link rel="preload" href="/fonts/inter-tight-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/instrument-serif-latin-400-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/quicksand-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/site.css">
-  <script type="importmap">
-  { "imports": {
-      "three": "/vendor/three/three.module.min.js",
-      "three/addons/": "/vendor/three/addons/"
-  } }
-  </script>
   <script type="module" src="/js/main.js"></script>
 </head>
-<body class="is-loading">
-  <a class="skip" href="#start">Skip to the sign-up form</a>
-  <canvas id="gl" aria-hidden="true"></canvas>
-  <div class="veil" id="veil" aria-hidden="true"><img src="/brand/cozy-mark.svg" alt="" width="56" height="56"></div>
+<body>
+  <a class="skip-link" href="#start">Skip to the start form</a>
 
-  <header class="nav" id="nav">
-    <a class="nav-brand" href="#top" aria-label="Cozy Digital home"><img src="/brand/cozy-logo-horizontal.svg" alt="Cozy Digital" height="30"></a>
-    <nav class="nav-links" aria-label="Sections">
+  <header class="site-header" id="nav">
+    <a class="brand-link" href="#hello" aria-label="Cozy Digital home">
+      <img src="/brand/cozy-logo-horizontal.svg" alt="Cozy Digital" width="190" height="36">
+    </a>
+    <nav class="header-links" aria-label="Main navigation">
       <a href="#how">How it works</a>
-      <a href="#work">Work</a>
+      <a href="#work">The reel</a>
       <a href="#agent">Cozy Agent</a>
       <a href="#pricing">Pricing</a>
     </nav>
-    <a class="btn btn-solid nav-cta" href="#start">Start a project <span aria-hidden="true">↗</span></a>
+    <a class="button button-header" href="#start" data-plan="starter">Start with 5 videos <span aria-hidden="true">↗</span></a>
   </header>
 
-  <div class="content" id="content">
-    <!-- 1 · hero -->
-    <section class="stage" id="top" data-stage="hero" aria-labelledby="hero-title">
-      <div class="pin" data-pin="hero">
-        <div class="hero-copy" id="hero-copy">
-          <p class="eyebrow"><span class="dot"></span>Cozy Digital · AI video studio</p>
-          <h1 id="hero-title" class="display">
-            <span class="line"><span>Your business,</span></span>
-            <span class="line"><em>in motion.</em></span>
-          </h1>
-          <p class="lede">Send us your photos, products and logo. We turn them into scroll-stopping AI video for your ads and your feed, every month.</p>
-          <div class="cta-row">
-            <a class="btn btn-solid" href="#start">Start your first video <span aria-hidden="true">↗</span></a>
-            <a class="btn btn-ghost" href="#work">See the work</a>
+  <main id="content">
+    <section class="hero chapter" id="hello" data-chapter data-chapter-number="01" data-chapter-name="Hello" aria-labelledby="hero-message">
+      <div class="hero-sticky">
+        <div class="hero-scene media-frame" id="hero-scene" data-hero-scene>
+          <picture class="video-poster">
+            <source media="(max-width: 767px)" srcset="/media/cozy/hero-mobile-poster.jpg">
+            <img src="/media/cozy/hero-poster.jpg" alt="" width="1920" height="1080" fetchpriority="high" decoding="async">
+          </picture>
+          <video id="hero-video" muted loop playsinline preload="none" poster="/media/cozy/hero-poster.jpg" data-src="/media/cozy/hero.mp4" data-webm="/media/cozy/hero.webm" data-mobile-src="/media/cozy/hero-mobile.mp4" data-mobile-webm="/media/cozy/hero-mobile.webm" aria-hidden="true"></video>
+        </div>
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="steam-wash" aria-hidden="true"></div>
+        <div class="hero-orbit">
+          <h1 id="hero-ring" class="hero-ring" data-ring aria-label="Cozy Digital">Cozy Digital</h1>
+        </div>
+        <div class="hero-copy wrap" data-hero-copy>
+          <p class="chapter-label"><span>01</span> Hello, we're Cozy.</p>
+          <h2 class="hero-title" id="hero-message">Your photos.<br>Made <em>cinematic.</em></h2>
+          <p class="hero-description">Send a few photos of your business. We make short AI videos for your socials, with every clip checked by a person.</p>
+          <div class="button-row">
+            <a class="button button-primary" href="#start" data-plan="starter">Start with 5 videos <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary" href="#work"><span class="play-symbol" aria-hidden="true">▷</span> Watch the reel</a>
           </div>
-          <p class="fine" id="hero-price">Plans from $40 a month.</p>
+          <p class="hero-price" id="hero-price">Plans from $40 a month.</p>
         </div>
-        <div class="scroll-cue" id="scroll-cue" aria-hidden="true"><span>Scroll</span><i></i></div>
+        <button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false"><span class="motion-icon" aria-hidden="true">Ⅱ</span><span data-motion-label>Pause motion</span></button>
       </div>
     </section>
 
-    <!-- 2 · you send -->
-    <section class="stage" id="how" data-stage="assets" aria-labelledby="assets-title">
-      <div class="pin" data-pin="assets">
-        <div class="side-copy" id="assets-copy">
-          <p class="eyebrow">01 · You send</p>
-          <h2 id="assets-title" class="display">Send us what you <em>already have.</em></h2>
-          <p>Phone photos of your shop. Your products on the counter. Your logo. One sentence about who buys from you. That's the whole brief.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3 · the signature moment -->
-    <section class="stage" data-stage="dissolve" aria-labelledby="dissolve-title">
-      <div class="pin" data-pin="dissolve">
-        <div class="dissolve-copy">
-          <h2 id="dissolve-title" class="display" data-beat-title>We turn it into <em>film.</em></h2>
-          <ol class="beats">
-            <li data-beat="0"><b>We break it down</b><span>Every photo becomes a first frame: your subject, your light, the mood of your place.</span></li>
-            <li data-beat="1"><b>We direct it</b><span>Camera moves, hooks and pacing picked for ads people watch past the first second.</span></li>
-            <li data-beat="2"><b>It moves</b><span>Vertical for Reels and TikTok, widescreen for YouTube and your site. Ready to post.</span></li>
-          </ol>
-        </div>
-        <div class="film-cap" id="film-cap" aria-hidden="true"><span>One photo in.</span> <span>One film out.</span></div>
-      </div>
-    </section>
-
-    <section class="stage" data-stage="film" aria-hidden="true"></section>
-
-    <!-- 4 · work -->
-    <section class="flow reel" id="work" data-flow="reel" aria-labelledby="work-title">
+    <section class="how chapter section-pad" id="how" data-chapter data-chapter-number="02" data-chapter-name="How it works" aria-labelledby="how-title" tabindex="-1">
       <div class="wrap">
-        <header class="sec-head" data-r>
-          <p class="eyebrow">02 · Made in our studio</p>
-          <h2 id="work-title" class="display">Work that stops <em>the scroll.</em></h2>
-          <p>Every shot here was generated in our studio. No cameras, no crews, no stock footage.</p>
-        </header>
-        <!-- three bands on a 12-column grid: big tile left, big tile centre, big tile right -->
-        <div class="reel-grid" id="reel-grid">
-          <figure class="clip big" style="grid-area: 1 / 1 / 3 / 9" data-r><video muted loop playsinline preload="none" poster="/media/reel/hf-b.jpg" data-src="/media/reel/hf-b.mp4"></video><figcaption>Storefront, night rain</figcaption></figure>
-          <figure class="clip" style="grid-area: 1 / 9 / 2 / 13" data-r><video muted loop playsinline preload="none" poster="/media/reel/shot-02.jpg" data-src="/media/reel/shot-02.mp4"></video><figcaption>Bar, city lights</figcaption></figure>
-          <figure class="clip" style="grid-area: 2 / 9 / 3 / 13" data-r><video muted loop playsinline preload="none" poster="/media/reel/shot-09.jpg" data-src="/media/reel/shot-09.mp4"></video><figcaption>Boardroom</figcaption></figure>
-          <figure class="clip" style="grid-area: 3 / 1 / 4 / 5" data-r><video muted loop playsinline preload="none" poster="/media/reel/shot-03.jpg" data-src="/media/reel/shot-03.mp4"></video><figcaption>Late-night desk</figcaption></figure>
-          <figure class="clip big" style="grid-area: 3 / 5 / 5 / 9" data-r><video muted loop playsinline preload="none" poster="/media/reel/shot-06-first.jpg" data-src="/media/reel/shot-06.mp4"></video><figcaption>Bar portrait</figcaption></figure>
-          <figure class="clip" style="grid-area: 3 / 9 / 4 / 13" data-r><video muted loop playsinline preload="none" poster="/media/reel/shot-07.jpg" data-src="/media/reel/shot-07.mp4"></video><figcaption>Back seat, paperwork</figcaption></figure>
-          <figure class="clip" style="grid-area: 4 / 1 / 5 / 5" data-r><video muted loop playsinline preload="none" poster="/media/reel/shot-05.jpg" data-src="/media/reel/shot-05.mp4"></video><figcaption>Bar conversation</figcaption></figure>
-          <figure class="clip" style="grid-area: 4 / 9 / 5 / 13" data-r><video muted loop playsinline preload="none" poster="/media/reel/shot-10.jpg" data-src="/media/reel/shot-10.mp4"></video><figcaption>City at night</figcaption></figure>
-          <figure class="clip" style="grid-area: 5 / 1 / 6 / 5" data-r><video muted loop playsinline preload="none" poster="/media/reel/shot-01.jpg" data-src="/media/reel/shot-01.mp4"></video><figcaption>Lounge, two-shot</figcaption></figure>
-          <figure class="clip" style="grid-area: 6 / 1 / 7 / 5" data-r><video muted loop playsinline preload="none" poster="/media/reel/shot-08.jpg" data-src="/media/reel/shot-08.mp4"></video><figcaption>Back seat, suit</figcaption></figure>
-          <figure class="clip big" style="grid-area: 5 / 5 / 7 / 13" data-r><video muted loop playsinline preload="none" poster="/media/reel/hf-d.jpg" data-src="/media/reel/hf-d.mp4"></video><figcaption>Talking to camera</figcaption></figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5 · cozy agent -->
-    <section class="stage" id="agent" data-stage="agent" aria-labelledby="agent-title">
-      <div class="pin" data-pin="agent">
-        <div class="agent-grid">
-          <div class="side-copy" id="agent-copy">
-            <p class="eyebrow">03 · The Cozy Agent</p>
-            <h2 id="agent-title" class="display">Your own creative director, <em>on call.</em></h2>
-            <p>The Cozy Agent learns your brand once: your products, your voice, your colors. Then it writes the hooks, plans the shots and makes the cuts. Ask for three weekend promos and get three.</p>
-            <ul class="ticks">
-              <li>Trained on your brand file</li>
-              <li>Scripts, hooks and shot lists written for you</li>
-              <li>Revisions right in the chat</li>
-            </ul>
-            <a class="btn btn-ghost" href="#pricing">Included in the Cozy Agent plan</a>
+        <header class="chapter-heading" data-reveal>
+          <div>
+            <p class="chapter-label"><span>02</span> How it works</p>
+            <h2 class="section-title" id="how-title">A little from you.<br><em>A lot of possibility.</em></h2>
           </div>
-          <div class="chat" id="chat" aria-label="Example conversation with the Cozy Agent">
-            <div class="chat-top"><img src="/brand/cozy-mark.svg" alt="" width="22" height="22"><b>Cozy Agent</b><span>example conversation</span></div>
-            <div class="bubble me" data-chat="0">Weekends are slow. Can we push the croissants?</div>
-            <div class="bubble ai" data-chat="1">Three ideas:<br>1. Oven door opens at 6am, steam in the window light.<br>2. Slow pan down the counter, the sold-out sign flips at the end.<br>3. Hands tear a croissant, flakes falling in slow motion.<br>Making #1 now, vertical and wide.</div>
-            <div class="bubble ai files" data-chat="2">
-              <span class="file"><i class="v"></i>croissant-dawn · 9:16</span>
-              <span class="file"><i class="w"></i>croissant-dawn · 16:9</span>
-              <small>Next: #3 as a 3-second hook?</small>
+          <p class="section-description">The moments are already there: your shop, your products, your people. We help you show them in a new way.</p>
+        </header>
+
+        <div class="process-grid">
+          <article class="process-step process-send" data-reveal>
+            <div class="media-frame process-media">
+              <img class="video-poster" src="/media/cozy/send-poster.jpg" alt="A phone on a warmly lit café counter, showing a photo of the shop." width="1920" height="1080" loading="lazy" decoding="async">
+              <video muted loop playsinline preload="none" poster="/media/cozy/send-poster.jpg" data-src="/media/cozy/send.mp4" data-webm="/media/cozy/send.webm" aria-hidden="true"></video>
             </div>
-            <div class="bubble me" data-chat="3">Yes. And put our logo on the last frame.</div>
-            <div class="typing" data-chat="4"><i></i><i></i><i></i></div>
+            <div class="step-copy">
+              <span class="step-number" aria-hidden="true">01</span>
+              <div><h3>You send.</h3><p>A few phone photos, your logo, and a little about your business. Start with what you already have.</p></div>
+            </div>
+          </article>
+          <article class="process-step process-make" data-reveal>
+            <div class="media-frame process-media">
+              <img class="video-poster" src="/media/cozy/make-poster.jpg" alt="Hot chocolate steaming on the same café counter, with warm fairy lights and a snowy blue night outside." width="1920" height="1080" loading="lazy" decoding="async">
+              <video muted loop playsinline preload="none" poster="/media/cozy/make-poster.jpg" data-src="/media/cozy/make.mp4" data-webm="/media/cozy/make.webm" aria-hidden="true"></video>
+            </div>
+            <div class="step-copy">
+              <span class="step-number" aria-hidden="true">02</span>
+              <div><h3>We make.</h3><p>We turn those photos into 5–10 second clips with Higgsfield. A person checks every one before it reaches you.</p></div>
+            </div>
+          </article>
+          <article class="process-post" data-reveal>
+            <span class="step-number" aria-hidden="true">03</span>
+            <h3>You post.</h3>
+            <p>Fresh clips for your feed, stories, and ads. Made for your business, ready to share.</p>
+            <a class="text-link" href="#work">See what that looks like <span aria-hidden="true">↗</span></a>
+            <img class="process-brand" src="/brand/cozy-icon.svg" alt="" width="64" height="64" loading="lazy">
+          </article>
+        </div>
+        <p class="human-note" data-reveal><img src="/brand/cozy-mark.svg" alt="" width="20" height="20"> Made with AI. Checked by people.</p>
+      </div>
+    </section>
+
+    <section class="reel chapter section-pad" id="work" data-chapter data-chapter-number="03" data-chapter-name="Reel" aria-labelledby="work-title" tabindex="-1">
+      <div class="wrap">
+        <header class="chapter-heading" data-reveal>
+          <div>
+            <p class="chapter-label"><span>03</span> The reel</p>
+            <h2 class="section-title" id="work-title">Small clips.<br><em>Something to feel.</em></h2>
           </div>
+          <p class="section-description">A selection from the Cozy studio. Different places, people, and moods, brought into motion.</p>
+        </header>
+        <div class="reel-grid" id="reel-grid">
+          <figure class="reel-item reel-feature" data-reveal>
+            <div class="media-frame"><img class="video-poster" src="/media/reel/hf-b.jpg" alt="A storefront glowing on a rainy night." width="1920" height="1080" loading="lazy" decoding="async"><video muted loop playsinline preload="none" poster="/media/reel/hf-b.jpg" data-src="/media/reel/hf-b.mp4" aria-label="Storefront in night rain"></video></div>
+            <figcaption><span>After hours</span><span>Place &amp; atmosphere</span></figcaption>
+          </figure>
+          <figure class="reel-item reel-tall" data-reveal>
+            <div class="media-frame"><img class="video-poster" src="/media/reel/shot-06-first.jpg" alt="A cinematic portrait in a softly lit bar." width="1920" height="1080" loading="lazy" decoding="async"><video muted loop playsinline preload="none" poster="/media/reel/shot-06-first.jpg" data-src="/media/reel/shot-06.mp4" aria-label="Portrait in a bar"></video></div>
+            <figcaption><span>A familiar face</span><span>People &amp; stories</span></figcaption>
+          </figure>
+          <figure class="reel-item" data-reveal>
+            <div class="media-frame"><img class="video-poster" src="/media/reel/shot-03.jpg" alt="A person at a desk late at night." width="1920" height="1080" loading="lazy" decoding="async"><video muted loop playsinline preload="none" poster="/media/reel/shot-03.jpg" data-src="/media/reel/shot-03.mp4" aria-label="A late-night desk scene"></video></div>
+            <figcaption><span>One more idea</span><span>Everyday moments</span></figcaption>
+          </figure>
+          <figure class="reel-item" data-reveal>
+            <div class="media-frame"><img class="video-poster" src="/media/reel/shot-02.jpg" alt="Warm bar lights against a city at night." width="1920" height="1080" loading="lazy" decoding="async"><video muted loop playsinline preload="none" poster="/media/reel/shot-02.jpg" data-src="/media/reel/shot-02.mp4" aria-label="Bar and city lights"></video></div>
+            <figcaption><span>Stay a little longer</span><span>Light &amp; mood</span></figcaption>
+          </figure>
+          <figure class="reel-item reel-wide" data-reveal>
+            <div class="media-frame"><img class="video-poster" src="/media/reel/hf-d.jpg" alt="A person speaking directly to the camera." width="1920" height="1080" loading="lazy" decoding="async"><video muted loop playsinline preload="none" poster="/media/reel/hf-d.jpg" data-src="/media/reel/hf-d.mp4" aria-label="A direct-to-camera scene"></video></div>
+            <figcaption><span>Let's talk</span><span>Stories that connect</span></figcaption>
+          </figure>
+          <details class="reel-more">
+            <summary>More from the studio</summary>
+            <div class="more-reel-grid">
+              <figure class="reel-item"><div class="media-frame"><img class="video-poster" src="/media/reel/shot-09.jpg" alt="A cinematic boardroom scene." width="1920" height="1080" loading="lazy" decoding="async"><video muted loop playsinline preload="none" poster="/media/reel/shot-09.jpg" data-src="/media/reel/shot-09.mp4" aria-label="Boardroom scene"></video></div><figcaption><span>In good company</span><span>Boardroom</span></figcaption></figure>
+              <figure class="reel-item"><div class="media-frame"><img class="video-poster" src="/media/reel/shot-07.jpg" alt="A person reviewing paperwork in the back seat of a car." width="1920" height="1080" loading="lazy" decoding="async"><video muted loop playsinline preload="none" poster="/media/reel/shot-07.jpg" data-src="/media/reel/shot-07.mp4" aria-label="Back seat, paperwork"></video></div><figcaption><span>On the way</span><span>Everyday stories</span></figcaption></figure>
+              <figure class="reel-item"><div class="media-frame"><img class="video-poster" src="/media/reel/shot-05.jpg" alt="A conversation in a warmly lit bar." width="1920" height="1080" loading="lazy" decoding="async"><video muted loop playsinline preload="none" poster="/media/reel/shot-05.jpg" data-src="/media/reel/shot-05.mp4" aria-label="Bar conversation"></video></div><figcaption><span>A little conversation</span><span>People &amp; places</span></figcaption></figure>
+              <figure class="reel-item"><div class="media-frame"><img class="video-poster" src="/media/reel/shot-10.jpg" alt="City lights at night." width="1920" height="1080" loading="lazy" decoding="async"><video muted loop playsinline preload="none" poster="/media/reel/shot-10.jpg" data-src="/media/reel/shot-10.mp4" aria-label="City at night"></video></div><figcaption><span>When the city glows</span><span>Light &amp; mood</span></figcaption></figure>
+              <figure class="reel-item"><div class="media-frame"><img class="video-poster" src="/media/reel/shot-01.jpg" alt="Two people in a lounge." width="1920" height="1080" loading="lazy" decoding="async"><video muted loop playsinline preload="none" poster="/media/reel/shot-01.jpg" data-src="/media/reel/shot-01.mp4" aria-label="Lounge, two-shot"></video></div><figcaption><span>Settle in</span><span>A shared moment</span></figcaption></figure>
+              <figure class="reel-item"><div class="media-frame"><img class="video-poster" src="/media/reel/shot-08.jpg" alt="A person in a suit, seated in the back of a car." width="1920" height="1080" loading="lazy" decoding="async"><video muted loop playsinline preload="none" poster="/media/reel/shot-08.jpg" data-src="/media/reel/shot-08.mp4" aria-label="Back seat, suit"></video></div><figcaption><span>Between places</span><span>Character &amp; detail</span></figcaption></figure>
+            </div>
+          </details>
+        </div>
+        <div class="reel-footer" data-reveal><p>Your business has a story, too.</p><a class="text-link" href="#start" data-plan="starter">Start with 5 videos <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+
+    <section class="agent chapter section-pad" id="agent" data-chapter data-chapter-number="04" data-chapter-name="Cozy Agent" aria-labelledby="agent-title" tabindex="-1">
+      <div class="wrap">
+        <header class="chapter-heading" data-reveal>
+          <div>
+            <p class="chapter-label"><span>04</span> Cozy Agent</p>
+            <h2 class="section-title" id="agent-title">Keep the ideas coming.<br><em>We'll be right here.</em></h2>
+          </div>
+          <p class="section-description">Our premium plan adds a creative agent that learns your brand, helps plan the next clip, and keeps the conversation going.</p>
+        </header>
+        <div class="agent-scene media-frame" data-reveal>
+          <img class="video-poster" src="/media/cozy/agent-poster.jpg" alt="A laptop on a cozy desk at night, with a sleeping kitten, a candle, and a knit throw." width="1920" height="1080" loading="lazy" decoding="async">
+          <video muted loop playsinline preload="none" poster="/media/cozy/agent-poster.jpg" data-src="/media/cozy/agent.mp4" data-webm="/media/cozy/agent.webm" aria-hidden="true"></video>
+          <div class="agent-scene-shade" aria-hidden="true"></div>
+          <div class="agent-scene-copy">
+            <img src="/brand/cozy-mark.svg" alt="" width="40" height="40">
+            <h3>A little more<br><em>creative company.</em></h3>
+            <a class="button button-secondary" href="#start" data-plan="agent">Meet your Cozy Agent <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="agent-details" data-reveal>
+          <p><span class="detail-index">01</span><strong>Your brand, remembered.</strong><span>Your products, voice, and visual style give each idea a starting point.</span></p>
+          <p><span class="detail-index">02</span><strong>A hand with the ideas.</strong><span>Hooks, scripts, and shot lists help turn “what should we post?” into a plan.</span></p>
+          <p><span class="detail-index">03</span><strong>People still in the loop.</strong><span>Every clip gets a human check. The final work should feel like your business.</span></p>
         </div>
       </div>
     </section>
 
-    <!-- 6 · pricing -->
-    <section class="flow pricing" id="pricing" data-flow="pricing" aria-labelledby="pricing-title">
+    <section class="pricing chapter section-pad" id="pricing" data-chapter data-chapter-number="05" data-chapter-name="Pricing" aria-labelledby="pricing-title" tabindex="-1">
       <div class="wrap">
-        <header class="sec-head" data-r>
-          <p class="eyebrow">04 · Pricing</p>
-          <h2 id="pricing-title" class="display">Video every month, <em>one simple plan.</em></h2>
-          <p>Pick a plan, send your stuff, get finished videos every month. Need more? Add a pack anytime.</p>
+        <header class="chapter-heading" data-reveal>
+          <div>
+            <p class="chapter-label"><span>05</span> Pricing</p>
+            <h2 class="section-title" id="pricing-title">Room to start.<br><em>Room to grow.</em></h2>
+          </div>
+          <p class="section-description">Choose the amount of video your business needs. Every plan starts with your photos and ends with clips you can share.</p>
         </header>
-        <div class="plans" id="plans" aria-live="polite"></div>
-        <p class="packs" id="packs" data-r></p>
+        <div class="plans" id="plans" aria-live="polite"><p class="pricing-loading">Getting the current plans…</p></div>
+        <p class="packs" id="packs"></p>
       </div>
     </section>
 
-    <!-- 7 · start -->
-    <section class="flow start" id="start" data-flow="start" aria-labelledby="start-title">
-      <div class="wrap start-grid">
-        <header class="sec-head" data-r>
-          <p class="eyebrow">05 · Start</p>
-          <h2 id="start-title" class="display">Let's make <em>your first one.</em></h2>
-          <p>Tell us about your business and drop in a few photos. We'll come back with your first concept.</p>
+    <section class="start chapter section-pad" id="start" data-chapter data-chapter-number="06" data-chapter-name="Start" aria-labelledby="start-title" tabindex="-1">
+      <div class="wrap">
+        <header class="chapter-heading" data-reveal>
+          <div>
+            <p class="chapter-label"><span>06</span> Start something</p>
+            <h2 class="section-title" id="start-title">Your next good thing<br><em>starts right here.</em></h2>
+          </div>
+          <p class="section-description">Tell us a little about your business and share a few photos. We'll get back to you with a first concept.</p>
         </header>
-        <form class="lead" id="lead-form" novalidate data-r>
-          <div class="two">
-            <label><span>Your name</span><input name="name" autocomplete="name" placeholder="Ana Ruiz" required></label>
-            <label><span>Email</span><input name="email" type="email" autocomplete="email" placeholder="ana@yourshop.com" required></label>
+        <div class="start-grid">
+          <div class="start-photo media-frame" data-reveal>
+            <img class="video-poster" src="/media/cozy/closing-poster.jpg" alt="Two friends and a dog sharing a blanket on a couch, with fairy lights and snow at the window." width="1920" height="1080" loading="lazy" decoding="async">
+            <video muted loop playsinline preload="none" poster="/media/cozy/closing-poster.jpg" data-src="/media/cozy/closing.mp4" data-webm="/media/cozy/closing.webm" aria-hidden="true"></video>
+            <div class="start-photo-shade" aria-hidden="true"></div>
+            <p>A little closer.<br><em>A little more Cozy.</em></p>
           </div>
-          <div class="two">
-            <label><span>Business</span><input name="business" autocomplete="organization" placeholder="Ana's Bakery"></label>
-            <label><span>Website or Instagram <small>optional</small></span><input name="website" inputmode="url" placeholder="@anasbakery"></label>
-          </div>
-          <label>Plan<select name="plan" id="lead-plan"><option value="">Not sure yet</option></select></label>
-          <label><span>What do you sell, and to who?</span><textarea name="message" rows="3" placeholder="Sourdough and pastries for the neighbourhood. Busy mornings, slow weekends."></textarea></label>
-          <label class="hp" aria-hidden="true">Company site<input name="company_site" tabindex="-1" autocomplete="off"></label>
-          <div class="dropzone" id="dropzone">
-            <input type="file" id="lead-files" multiple accept="image/*,video/mp4,video/quicktime,video/webm,application/pdf">
-            <p><b>Drop photos, your logo or a clip here</b><span>or tap to choose · up to 12 files</span></p>
-            <ul class="picked" id="picked"></ul>
-          </div>
-          <button class="btn btn-solid btn-wide" type="submit" id="lead-submit">Send it over <span aria-hidden="true">↗</span></button>
-          <p class="form-msg" id="lead-msg" role="status" aria-live="polite"></p>
-        </form>
+          <form class="lead" id="lead-form" novalidate>
+            <div class="form-pair">
+              <label for="lead-name">Your name<input id="lead-name" name="name" autocomplete="name" maxlength="120" placeholder="Your name" required></label>
+              <label for="lead-email">Email<input id="lead-email" name="email" type="email" autocomplete="email" maxlength="200" placeholder="you@yourbusiness.com" required></label>
+            </div>
+            <div class="form-pair">
+              <label for="lead-business">Business<input id="lead-business" name="business" autocomplete="organization" maxlength="200" placeholder="Your business name"></label>
+              <label for="lead-website">Website or Instagram <span class="optional">Optional</span><input id="lead-website" name="website" inputmode="url" maxlength="300" placeholder="Website or @handle"></label>
+            </div>
+            <label for="lead-plan">Choose a plan<select name="plan" id="lead-plan"><option value="">Help me choose</option></select></label>
+            <label for="lead-message">What would you like to share?<textarea id="lead-message" name="message" maxlength="4000" rows="3" placeholder="A new product, a quiet afternoon, something your customers love…"></textarea></label>
+            <label class="honeypot" aria-hidden="true">Company site<input name="company_site" tabindex="-1" autocomplete="off"></label>
+            <div class="dropzone" id="dropzone">
+              <input type="file" id="lead-files" multiple accept="image/*,video/mp4,video/quicktime,video/webm,application/pdf" aria-label="Choose photos, a logo, or a clip" aria-describedby="file-help">
+              <span class="upload-symbol" aria-hidden="true">↑</span>
+              <p><strong>Drop in a little inspiration</strong><span id="file-help">Photos, your logo, or a clip. Choose up to 12 files.</span></p>
+              <ul class="picked" id="picked" aria-label="Chosen files"></ul>
+            </div>
+            <button class="button button-primary button-wide" type="submit" id="lead-submit">Send it to Cozy <span aria-hidden="true">↗</span></button>
+            <p class="form-note">We'll reply to the email you share above.</p>
+            <p class="form-msg" id="lead-msg" role="status" aria-live="polite"></p>
+          </form>
+        </div>
       </div>
-      <div class="end-space" aria-hidden="true"></div>
-      <footer class="foot wrap">
-        <img src="/brand/cozy-logo-horizontal-mono.svg" alt="Cozy Digital" height="24">
-        <span>© <span id="year">2026</span> Cozy Digital</span>
-        <a href="https://www.cozydigital.org">cozydigital.org</a>
-      </footer>
     </section>
-  </div>
-  <noscript><style>.content{position:static!important;transform:none!important}.veil{display:none}</style></noscript>
+  </main>
+
+  <footer class="site-footer wrap">
+    <a class="brand-link" href="#hello" aria-label="Cozy Digital home"><img src="/brand/cozy-logo-horizontal.svg" alt="Cozy Digital" width="190" height="36" loading="lazy"></a>
+    <p>Good things, made together.</p>
+    <div><span>© <span id="year">2026</span> Cozy Digital</span><a href="https://www.cozydigital.org">cozydigital.org <span aria-hidden="true">↗</span></a><button class="inspiration-trigger" type="button" data-open-inspirations aria-haspopup="dialog" aria-controls="inspiration-dialog">Our inspirations <span aria-hidden="true">✦</span></button></div>
+  </footer>
+
+  <dialog class="inspiration-dialog" id="inspiration-dialog" aria-labelledby="inspiration-title" aria-describedby="inspiration-intro">
+    <header class="inspiration-head">
+      <h2 id="inspiration-title">A little constellation<br>of <em>brilliant minds.</em></h2>
+      <p id="inspiration-intro">Builders, thinkers, and voices who inspire us to make something of our own. Explore their stories.</p>
+      <button class="inspiration-close" type="button" data-close-inspirations aria-label="Close our inspirations" autofocus><span aria-hidden="true">×</span></button>
+    </header>
+    <div class="inspiration-grid">
+      <a class="portrait-card" data-orbit-person href="https://news.berkeley.edu/2010/07/15/blackwell/" target="_blank" rel="noopener noreferrer" aria-label="Read about David Blackwell at UC Berkeley, opens in a new tab"><img src="/media/cozy/inspirations/david-blackwell.jpg" alt="AI-created tribute portrait of David Blackwell." width="512" height="512" loading="lazy" decoding="async"><strong>David Blackwell</strong><span>Mathematician &amp; statistician</span></a>
+      <a class="portrait-card" data-orbit-person href="https://home.nps.gov/articles/000/-h-our-history-lesson-madam-c-j-walker-african-american-millionaire-philanthropist-activist.htm" target="_blank" rel="noopener noreferrer" aria-label="Read about Madam C. J. Walker at the National Park Service, opens in a new tab"><img src="/media/cozy/inspirations/madam-cj-walker.jpg" alt="AI-created tribute portrait of Madam C. J. Walker." width="512" height="512" loading="lazy" decoding="async"><strong>Madam C. J. Walker</strong><span>Entrepreneur &amp; philanthropist</span></a>
+      <a class="portrait-card" data-orbit-person href="https://home.nps.gov/people/george-washington-carver.htm" target="_blank" rel="noopener noreferrer" aria-label="Read about George Washington Carver at the National Park Service, opens in a new tab"><img src="/media/cozy/inspirations/george-washington-carver.jpg" alt="AI-created tribute portrait of George Washington Carver." width="512" height="512" loading="lazy" decoding="async"><strong>George Washington Carver</strong><span>Agricultural scientist &amp; educator</span></a>
+      <a class="portrait-card" data-orbit-person href="https://www.lewislatimerhouse.org/about" target="_blank" rel="noopener noreferrer" aria-label="Read about Lewis Latimer at the Lewis Latimer House Museum, opens in a new tab"><img src="/media/cozy/inspirations/lewis-latimer.jpg" alt="AI-created tribute portrait of Lewis Latimer." width="512" height="512" loading="lazy" decoding="async"><strong>Lewis Latimer</strong><span>Inventor &amp; draftsman</span></a>
+      <a class="portrait-card" data-orbit-person href="https://nmaahc.si.edu/explore/stories/malcolm-x" target="_blank" rel="noopener noreferrer" aria-label="Read about Malcolm X at the Smithsonian, opens in a new tab"><img src="/media/cozy/inspirations/malcolm-x.jpg" alt="AI-created tribute portrait of Malcolm X." width="512" height="512" loading="lazy" decoding="async"><strong>Malcolm X</strong><span>Human rights leader</span></a>
+      <a class="portrait-card" data-orbit-person href="https://rockhall.com/inductees/muddy-waters/" target="_blank" rel="noopener noreferrer" aria-label="Read about Muddy Waters at the Rock and Roll Hall of Fame, opens in a new tab"><img src="/media/cozy/inspirations/muddy-waters.jpg" alt="AI-created tribute portrait of Muddy Waters." width="512" height="512" loading="lazy" decoding="async"><strong>Muddy Waters</strong><span>Blues singer &amp; guitarist</span></a>
+    </div>
+    <p class="inspiration-note">AI-created tribute portraits, inspired by archival photographs. Select a portrait to learn more.</p>
+  </dialog>
+
+  <nav class="chapter-nav" id="chapter-nav" aria-label="Chapter navigation">
+    <ul class="chapter-menu" id="chapter-menu" hidden>
+      <li><a href="#hello"><span>01</span> Hello <span aria-hidden="true">↗</span></a></li>
+      <li><a href="#how"><span>02</span> How it works <span aria-hidden="true">↗</span></a></li>
+      <li><a href="#work"><span>03</span> Reel <span aria-hidden="true">↗</span></a></li>
+      <li><a href="#agent"><span>04</span> Cozy Agent <span aria-hidden="true">↗</span></a></li>
+      <li><a href="#pricing"><span>05</span> Pricing <span aria-hidden="true">↗</span></a></li>
+      <li><a href="#start"><span>06</span> Start <span aria-hidden="true">↗</span></a></li>
+    </ul>
+    <button class="chapter-toggle" id="chapter-toggle" type="button" aria-expanded="false" aria-controls="chapter-menu">
+      <img src="/brand/cozy-mark.svg" alt="" width="22" height="22">
+      <span id="chapter-number">01</span><span id="chapter-name">Hello</span>
+      <span class="menu-symbol" aria-hidden="true"><i></i><i></i></span>
+    </button>
+  </nav>
+  <noscript><p class="noscript-note">You can explore the page with motion off. Enable JavaScript to load current plans and send the form, or visit <a href="https://www.cozydigital.org">cozydigital.org</a>.</p></noscript>
 </body>
 </html>
